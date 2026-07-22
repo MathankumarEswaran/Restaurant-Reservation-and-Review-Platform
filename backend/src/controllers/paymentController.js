@@ -5,6 +5,7 @@ import { Reservation } from "../models/Reservation.js";
 import { asyncHandler } from "../middleware/asyncHandler.js";
 
 const FEE_PER_GUEST_INR = 50;
+const GST_RATE = 0.18;
 
 export const createOrder = asyncHandler(async (req, res) => {
   const { restaurant, date, time, guests, specialRequest } = req.body;
@@ -20,12 +21,14 @@ export const createOrder = asyncHandler(async (req, res) => {
     throw new Error("Restaurant not found");
   }
 
-  const amount = Number(guests) * FEE_PER_GUEST_INR * 100; // paise
+  const baseAmount = Number(guests) * FEE_PER_GUEST_INR * 100; // paise
+  const taxAmount = Math.round(baseAmount * GST_RATE);
+  const totalAmount = baseAmount + taxAmount;
 
   let order;
   try {
     order = await razorpay.orders.create({
-      amount,
+      amount: totalAmount,
       currency: "INR",
       receipt: `rcpt_${Date.now()}`,
       notes: {
@@ -35,6 +38,8 @@ export const createOrder = asyncHandler(async (req, res) => {
         guests: String(guests),
         specialRequest: specialRequest ?? "",
         userId: String(req.user._id),
+        baseAmount: String(baseAmount),
+        taxAmount: String(taxAmount),
       },
     });
   } catch (err) {
@@ -44,7 +49,9 @@ export const createOrder = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     orderId: order.id,
-    amount: order.amount,
+    baseAmount,
+    taxAmount,
+    totalAmount: order.amount,
     currency: order.currency,
     keyId: process.env.RAZORPAY_KEY_ID,
   });
@@ -97,6 +104,8 @@ export const verifyAndCreateReservation = asyncHandler(async (req, res) => {
     payment: {
       orderId: razorpay_order_id,
       paymentId: razorpay_payment_id,
+      baseAmount: Number(notes.baseAmount) || undefined,
+      taxAmount: Number(notes.taxAmount) || undefined,
       amount: order.amount,
       currency: order.currency,
       status: "paid",

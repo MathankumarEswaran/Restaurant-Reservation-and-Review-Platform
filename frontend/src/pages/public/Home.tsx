@@ -54,7 +54,7 @@ export function Home() {
             <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
               Find your table, <span className="text-primary">right now.</span>
             </h1>
-            <p className="mx-auto mt-5 max-w-lg text-base text-slate-300 sm:text-lg">
+            <p className="mx-auto mt-5 max-w-lg text-base text-text-subtle sm:text-lg">
               Discover top-rated restaurants, read real reviews, and reserve your table in seconds.
             </p>
           </motion.div>
@@ -187,10 +187,10 @@ export function Home() {
                 className="rounded-2xl bg-white/5 p-6 backdrop-blur-sm"
               >
                 <RatingStars rating={t.rating} size={14} />
-                <p className="mt-4 text-sm leading-relaxed text-slate-300">&ldquo;{t.message}&rdquo;</p>
+                <p className="mt-4 text-sm leading-relaxed text-text-subtle">&ldquo;{t.message}&rdquo;</p>
                 <div className="mt-5">
                   <p className="text-sm font-semibold text-white">{t.name}</p>
-                  <p className="text-xs text-slate-400">{t.role}</p>
+                  <p className="text-xs text-text-subtle">{t.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -213,7 +213,7 @@ export function Home() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="w-full rounded-xl border-none px-4 py-3 text-sm text-secondary outline-none placeholder:text-slate-400"
+              className="w-full rounded-xl border-none px-4 py-3 text-sm text-text outline-none placeholder:text-text-subtle"
             />
             <button
               type="submit"

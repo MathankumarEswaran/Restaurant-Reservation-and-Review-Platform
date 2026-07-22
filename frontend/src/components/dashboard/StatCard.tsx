@@ -17,7 +17,7 @@ const toneClasses = {
 
 export function StatCard({ label, value, icon: Icon, trend, tone = "primary" }: StatCardProps) {
   return (
-    <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+    <div className="rounded-2xl border border-border bg-surface-raised p-5 shadow-sm">
       <div className="flex items-center justify-between">
         <span className={cn("flex h-11 w-11 items-center justify-center rounded-xl", toneClasses[tone])}>
           <Icon size={20} />
@@ -29,8 +29,8 @@ export function StatCard({ label, value, icon: Icon, trend, tone = "primary" }: 
           </span>
         )}
       </div>
-      <p className="mt-4 text-2xl font-bold text-secondary">{value}</p>
-      <p className="mt-1 text-sm text-slate-500">{label}</p>
+      <p className="mt-4 text-2xl font-bold text-text">{value}</p>
+      <p className="mt-1 text-sm text-text-muted">{label}</p>
     </div>
   );
 }

@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { FiUser, FiMail, FiPhone, FiLock } from "react-icons/fi";
-import { FcGoogle } from "react-icons/fc";
 import { AuthShell } from "../../components/layout/AuthShell";
 import { Input } from "../../components/common/Input";
 import { Button } from "../../components/common/Button";
@@ -98,15 +97,6 @@ export function Register() {
           Create Account
         </Button>
       </form>
-
-      <div className="my-6 flex items-center gap-3">
-        <div className="h-px flex-1 bg-slate-200" />
-        <span className="text-xs text-slate-400">OR</span>
-        <div className="h-px flex-1 bg-slate-200" />
-      </div>
-      <Button variant="outline" fullWidth size="lg" icon={<FcGoogle size={18} />} onClick={() => toast("Google login is UI only for now", { icon: "🔧" })}>
-        Continue with Google
-      </Button>
     </AuthShell>
   );
 }

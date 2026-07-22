@@ -16,19 +16,19 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={selectId} className="mb-1.5 block text-sm font-medium text-secondary">
+          <label htmlFor={selectId} className="mb-1.5 block text-sm font-medium text-text">
             {label}
           </label>
         )}
         <div className="relative">
-          {icon && <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">{icon}</span>}
+          {icon && <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-text-subtle">{icon}</span>}
           <select
             ref={ref}
             id={selectId}
             className={cn(
-              "w-full appearance-none rounded-xl border bg-white px-4 py-2.5 text-sm text-secondary outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20",
+              "w-full appearance-none rounded-xl border bg-surface-raised px-4 py-2.5 text-sm text-text outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20",
               icon && "pl-10",
-              error ? "border-red-400" : "border-slate-200",
+              error ? "border-red-400" : "border-border-strong",
               className
             )}
             {...rest}
@@ -45,7 +45,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
               </option>
             ))}
           </select>
-          <FiChevronDown className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+          <FiChevronDown className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-text-subtle" />
         </div>
         {error && <p className="mt-1.5 text-xs font-medium text-red-500">{error}</p>}
       </div>

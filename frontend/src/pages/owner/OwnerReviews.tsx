@@ -24,8 +24,8 @@ export function OwnerReviews() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Reviews</h1>
-      <p className="mt-1 text-slate-500">Respond to feedback from your customers.</p>
+      <h1 className="text-2xl font-bold text-text">Reviews</h1>
+      <p className="mt-1 text-text-muted">Respond to feedback from your customers.</p>
 
       <div className="mt-6">
         {reviews.length === 0 ? (
@@ -33,24 +33,24 @@ export function OwnerReviews() {
         ) : (
           <div className="space-y-4">
             {reviews.map((review) => (
-              <div key={review.id} className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+              <div key={review.id} className="rounded-2xl border border-border bg-surface-raised p-5 shadow-sm">
                 <div className="flex items-start gap-3">
                   <img src={review.userAvatar} alt={review.userName} className="h-11 w-11 rounded-full object-cover" />
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <p className="font-semibold text-secondary">{review.userName}</p>
-                      <span className="text-xs text-slate-400">{formatDate(review.createdAt)}</span>
+                      <p className="font-semibold text-text">{review.userName}</p>
+                      <span className="text-xs text-text-subtle">{formatDate(review.createdAt)}</span>
                     </div>
                     <RatingStars rating={review.rating} size={13} className="mt-1" />
-                    <h4 className="mt-2 font-medium text-secondary">{review.title}</h4>
-                    <p className="mt-1 text-sm text-slate-600">{review.comment}</p>
+                    <h4 className="mt-2 font-medium text-text">{review.title}</h4>
+                    <p className="mt-1 text-sm text-text-muted">{review.comment}</p>
 
                     {review.ownerReply ? (
-                      <div className="mt-4 flex gap-2.5 rounded-xl bg-slate-50 p-4">
+                      <div className="mt-4 flex gap-2.5 rounded-xl bg-surface-sunken p-4">
                         <FiCornerDownRight className="mt-0.5 shrink-0 text-primary" />
                         <div>
-                          <p className="text-sm font-semibold text-secondary">Your response</p>
-                          <p className="mt-1 text-sm text-slate-600">{review.ownerReply.message}</p>
+                          <p className="text-sm font-semibold text-text">Your response</p>
+                          <p className="mt-1 text-sm text-text-muted">{review.ownerReply.message}</p>
                         </div>
                       </div>
                     ) : (
@@ -59,7 +59,7 @@ export function OwnerReviews() {
                           value={replyDrafts[review.id] ?? ""}
                           onChange={(e) => setReplyDrafts((prev) => ({ ...prev, [review.id]: e.target.value }))}
                           placeholder="Write a reply..."
-                          className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm outline-none focus:border-primary"
+                          className="w-full rounded-xl border border-border-strong px-3.5 py-2 text-sm outline-none focus:border-primary"
                         />
                         <button
                           onClick={() => submitReply(review.id)}

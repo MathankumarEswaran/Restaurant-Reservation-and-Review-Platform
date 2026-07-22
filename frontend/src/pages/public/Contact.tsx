@@ -35,16 +35,16 @@ export function Contact() {
 
       <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <Breadcrumb items={[{ label: "Contact" }]} />
-        <h1 className="mt-3 text-3xl font-bold text-secondary sm:text-4xl">Get in Touch</h1>
-        <p className="mt-2 max-w-xl text-slate-500">
+        <h1 className="mt-3 text-3xl font-bold text-text sm:text-4xl">Get in Touch</h1>
+        <p className="mt-2 max-w-xl text-text-muted">
           Have a question about a reservation, partnership, or feedback for us? We'd love to hear from you.
         </p>
 
         <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.2fr]">
           <div className="space-y-6">
-            <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
-              <h2 className="mb-4 font-semibold text-secondary">Business Information</h2>
-              <ul className="space-y-4 text-sm text-slate-600">
+            <div className="rounded-2xl border border-border bg-surface-raised p-6 shadow-sm">
+              <h2 className="mb-4 font-semibold text-text">Business Information</h2>
+              <ul className="space-y-4 text-sm text-text-muted">
                 <li className="flex items-start gap-3">
                   <FiMapPin className="mt-0.5 shrink-0 text-primary" /> 2/108, RS Puram, Coimbatore, Tamil Nadu
                 </li>
@@ -63,7 +63,7 @@ export function Contact() {
                   <a
                     key={idx}
                     href="#"
-                    className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-secondary hover:bg-primary hover:text-white"
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-sunken text-text hover:bg-primary hover:text-white"
                   >
                     <Icon size={15} />
                   </a>
@@ -71,14 +71,14 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="h-56 overflow-hidden rounded-2xl border border-slate-100 bg-slate-100">
-              <div className="flex h-full w-full items-center justify-center text-sm text-slate-400">
+            <div className="h-56 overflow-hidden rounded-2xl border border-border bg-surface-sunken">
+              <div className="flex h-full w-full items-center justify-center text-sm text-text-subtle">
                 [ Google Map Placeholder ]
               </div>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <Input label="Full Name" placeholder="Jane Doe" {...register("name", { required: "Name is required" })} error={errors.name?.message} />
               <Input

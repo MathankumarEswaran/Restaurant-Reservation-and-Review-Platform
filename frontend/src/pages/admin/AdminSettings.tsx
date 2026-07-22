@@ -21,11 +21,11 @@ export function AdminSettings() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Platform Settings</h1>
-      <p className="mt-1 text-slate-500">Configure global platform behavior.</p>
+      <h1 className="text-2xl font-bold text-text">Platform Settings</h1>
+      <p className="mt-1 text-text-muted">Configure global platform behavior.</p>
 
-      <div className="mt-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="mb-4 font-semibold text-secondary">General</h2>
+      <div className="mt-6 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
+        <h2 className="mb-4 font-semibold text-text">General</h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <Input label="Platform Name" defaultValue="Chennai Traditions Reserved" />
           <Input label="Support Email" defaultValue="support@tabletime.com" />
@@ -40,20 +40,20 @@ export function AdminSettings() {
         </Button>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="mb-4 font-semibold text-secondary">Feature Flags</h2>
+      <div className="mt-6 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
+        <h2 className="mb-4 font-semibold text-text">Feature Flags</h2>
         <div className="space-y-3">
           {featureFlags.map((flag) => (
-            <label key={flag.key} className="flex cursor-pointer items-center justify-between rounded-xl border border-slate-100 px-4 py-3">
+            <label key={flag.key} className="flex cursor-pointer items-center justify-between rounded-xl border border-border px-4 py-3">
               <div>
-                <p className="text-sm font-medium text-secondary">{flag.label}</p>
-                <p className="text-xs text-slate-500">{flag.description}</p>
+                <p className="text-sm font-medium text-text">{flag.label}</p>
+                <p className="text-xs text-text-muted">{flag.description}</p>
               </div>
               <input
                 type="checkbox"
                 checked={flags[flag.key]}
                 onChange={(e) => setFlags((f) => ({ ...f, [flag.key]: e.target.checked }))}
-                className="h-4 w-4 shrink-0 rounded border-slate-300 text-primary focus:ring-primary/30"
+                className="h-4 w-4 shrink-0 rounded border-border-strong text-primary focus:ring-primary/30"
               />
             </label>
           ))}

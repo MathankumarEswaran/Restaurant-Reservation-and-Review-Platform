@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
 
@@ -14,6 +16,28 @@
   --color-accent-dark: #059669;
 
   --color-surface: #F8FAFC;
+
+  /* Dark-mode-aware tokens. Kept separate from --color-secondary (which stays
+     fixed as a brand/background color for buttons and overlays) so retrofitting
+     text and surfaces for dark mode can't break those. */
+  --color-surface-raised: #FFFFFF;
+  --color-surface-sunken: #F1F5F9;
+  --color-border: #F1F5F9;
+  --color-border-strong: #E2E8F0;
+  --color-text: #1E293B;
+  --color-text-muted: #64748B;
+  --color-text-subtle: #94A3B8;
+}
+
+.dark {
+  --color-surface: #0F172A;
+  --color-surface-raised: #1E293B;
+  --color-surface-sunken: #172033;
+  --color-border: #1E293B;
+  --color-border-strong: #334155;
+  --color-text: #F1F5F9;
+  --color-text-muted: #94A3B8;
+  --color-text-subtle: #64748B;
 }
 
 html {
@@ -24,7 +48,8 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   background-color: var(--color-surface);
-  color: var(--color-secondary);
+  color: var(--color-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #root {

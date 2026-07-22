@@ -13,8 +13,8 @@ export function ErrorState({ title = "Something went wrong", message, onRetry }:
       <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100 text-red-500">
         <FiAlertTriangle size={28} />
       </div>
-      <h3 className="text-lg font-semibold text-secondary">{title}</h3>
-      {message && <p className="mt-1.5 max-w-sm text-sm text-slate-500">{message}</p>}
+      <h3 className="text-lg font-semibold text-text">{title}</h3>
+      {message && <p className="mt-1.5 max-w-sm text-sm text-text-muted">{message}</p>}
       {onRetry && (
         <div className="mt-6">
           <Button variant="outline" onClick={onRetry}>

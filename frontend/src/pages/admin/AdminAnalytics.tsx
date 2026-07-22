@@ -16,13 +16,13 @@ const maxCategoryCount = Math.max(...categories.map((c) => c.restaurantCount));
 export function AdminAnalytics() {
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Analytics</h1>
-      <p className="mt-1 text-slate-500">Platform-wide growth and engagement trends.</p>
+      <h1 className="text-2xl font-bold text-text">Analytics</h1>
+      <p className="mt-1 text-text-muted">Platform-wide growth and engagement trends.</p>
 
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6 lg:col-span-2">
+        <div className="rounded-2xl border border-border bg-surface-raised p-5 shadow-sm sm:p-6 lg:col-span-2">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="font-semibold text-secondary">Booking Growth</h2>
+            <h2 className="font-semibold text-text">Booking Growth</h2>
             <span className="flex items-center gap-1 text-xs font-semibold text-accent-dark">
               <FiTrendingUp size={13} /> +22% vs last period
             </span>
@@ -37,22 +37,22 @@ export function AdminAnalytics() {
                     title={String(b.value)}
                   />
                 </div>
-                <span className="text-xs text-slate-500">{b.label}</span>
+                <span className="text-xs text-text-muted">{b.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">
-          <h2 className="mb-6 font-semibold text-secondary">Top Categories</h2>
+        <div className="rounded-2xl border border-border bg-surface-raised p-5 shadow-sm sm:p-6">
+          <h2 className="mb-6 font-semibold text-text">Top Categories</h2>
           <div className="space-y-4">
             {categories.slice(0, 6).map((c) => (
               <div key={c.id}>
                 <div className="mb-1.5 flex items-center justify-between text-sm">
-                  <span className="text-slate-600">{c.name}</span>
-                  <span className="font-medium text-secondary">{c.restaurantCount}</span>
+                  <span className="text-text-muted">{c.name}</span>
+                  <span className="font-medium text-text">{c.restaurantCount}</span>
                 </div>
-                <div className="h-2 w-full rounded-full bg-slate-100">
+                <div className="h-2 w-full rounded-full bg-surface-sunken">
                   <div className="h-2 rounded-full bg-primary" style={{ width: `${(c.restaurantCount / maxCategoryCount) * 100}%` }} />
                 </div>
               </div>
@@ -67,9 +67,9 @@ export function AdminAnalytics() {
           { label: "Conversion Rate", value: "6.8%" },
           { label: "Repeat Booking Rate", value: "38%" },
         ].map((stat) => (
-          <div key={stat.label} className="rounded-2xl border border-slate-100 bg-white p-5 text-center shadow-sm">
-            <p className="text-2xl font-bold text-secondary">{stat.value}</p>
-            <p className="mt-1 text-sm text-slate-500">{stat.label}</p>
+          <div key={stat.label} className="rounded-2xl border border-border bg-surface-raised p-5 text-center shadow-sm">
+            <p className="text-2xl font-bold text-text">{stat.value}</p>
+            <p className="mt-1 text-sm text-text-muted">{stat.label}</p>
           </div>
         ))}
       </div>

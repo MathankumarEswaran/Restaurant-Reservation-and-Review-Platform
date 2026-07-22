@@ -22,17 +22,17 @@ export function AdminRestaurants() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Restaurants</h1>
-      <p className="mt-1 text-slate-500">Moderate restaurant listings across the platform.</p>
+      <h1 className="text-2xl font-bold text-text">Restaurants</h1>
+      <p className="mt-1 text-text-muted">Moderate restaurant listings across the platform.</p>
 
       <div className="mt-6">
         <Input icon={<FiSearch size={16} />} placeholder="Search by name or city" value={search} onChange={(e) => setSearch(e.target.value)} className="sm:max-w-xs" />
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+      <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface-raised shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="bg-slate-50 text-xs uppercase text-slate-500">
+            <thead className="bg-surface-sunken text-xs uppercase text-text-muted">
               <tr>
                 <th className="px-5 py-3 font-medium">Restaurant</th>
                 <th className="px-5 py-3 font-medium">Category</th>
@@ -43,19 +43,19 @@ export function AdminRestaurants() {
             </thead>
             <tbody>
               {filtered.map((r) => (
-                <tr key={r.id} className="border-b border-slate-50 last:border-none">
+                <tr key={r.id} className="border-b border-border last:border-none">
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-3">
                       <img src={r.coverImage} alt={r.name} className="h-10 w-10 rounded-lg object-cover" />
                       <div>
-                        <p className="font-medium text-secondary">{r.name}</p>
-                        <p className="text-xs text-slate-500">{r.location.city}, {r.location.state}</p>
+                        <p className="font-medium text-text">{r.name}</p>
+                        <p className="text-xs text-text-muted">{r.location.city}, {r.location.state}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-5 py-4 text-slate-600">{r.category}</td>
+                  <td className="px-5 py-4 text-text-muted">{r.category}</td>
                   <td className="px-5 py-4">
-                    <span className="flex items-center gap-1 text-slate-600">
+                    <span className="flex items-center gap-1 text-text-muted">
                       <FiStar className="text-amber-400" size={14} /> {r.rating.toFixed(1)}
                     </span>
                   </td>

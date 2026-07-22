@@ -73,4 +73,63 @@ export const menusByRestaurant: Record<string, MenuItem[]> = {
     item("m6-3", "Set Dosa", "Soft, spongy mini dosas served in a stack of three", 70, "Tiffin", dosaTray, true),
     item("m6-4", "Filter Coffee", "Strong decoction coffee with frothy milk", 25, "Beverages", filterCoffee, true),
   ],
+  "r-8": [
+    item("m8-1", "French Onion Soup", "Caramelized onion soup, gruyère crouton", 320, "Starters", restaurantTable, true, true),
+    item("m8-2", "Pan-Seared Fish", "Catch of the day with lemon butter sauce and seasonal vegetables", 620, "Mains", thali2, false, true),
+    item("m8-3", "Ratatouille", "Slow-cooked Provençal vegetable stew", 380, "Mains", thali1, true),
+    item("m8-4", "Crème Brûlée", "Classic vanilla custard with a caramelized sugar crust", 260, "Desserts", filterCoffee, true, true),
+  ],
+  "r-9": [
+    item("m9-1", "Continental Grilled Platter", "Chef's selection of grilled meats and vegetables", 650, "Mains", restaurantTable, false, true),
+    item("m9-2", "Butter Chicken", "Tandoori chicken simmered in a creamy tomato gravy", 420, "Mains", biryani, false, true),
+    item("m9-3", "Paneer Tikka", "Char-grilled cottage cheese marinated in spiced yogurt", 340, "Starters", thali2, true),
+    item("m9-4", "Dosa Trio", "Three South Indian dosa varieties with chutneys", 280, "Tiffin", dosaChutneys, true),
+  ],
+  "r-10": [
+    item("m10-1", "Dim Sum Basket", "Steamed Pan-Asian dumplings, assorted fillings", 420, "Starters", dosa3Sauces, false, true),
+    item("m10-2", "Pad Thai", "Stir-fried rice noodles, tofu or chicken, tamarind sauce", 480, "Mains", restaurantTable, false, true),
+    item("m10-3", "Butter Garlic Prawns", "Wok-tossed prawns in a butter garlic glaze", 590, "Mains", biryani, false),
+    item("m10-4", "Chilli Paneer", "Indo-Chinese battered cottage cheese in a spicy glaze", 360, "Starters", thali2, true),
+  ],
+  "r-11": [
+    item("m11-1", "Idli", "Soft steamed rice cakes with sambar and coconut chutney", 45, "Tiffin", idliCoffee, true, true),
+    item("m11-2", "Ghee Roast Dosa", "Crisp rice crepe roasted in ghee", 85, "Tiffin", dosaTray, true, true),
+    item("m11-3", "Medu Vada", "Crispy lentil doughnuts with sambar and chutney", 50, "Tiffin", vadaPlate, true),
+    item("m11-4", "Filter Coffee", "Strong decoction coffee with frothy milk", 30, "Beverages", filterCoffee, true, true),
+  ],
+  "r-12": [
+    item("m12-1", "Naatu Kozhi Curry", "Country chicken slow-cooked in Kongu-style spices", 380, "Mains", biryani, false, true),
+    item("m12-2", "Mutton Chukka", "Dry-roasted mutton tossed with roasted spices and curry leaf", 420, "Mains", restaurantTable, false, true),
+    item("m12-3", "Parotta", "Layered flatbread, served flaky and hot", 30, "Breads", thali1, true, true),
+    item("m12-4", "Fish Fry", "Pan-fried fish marinated in Kongu spice blend", 340, "Starters", sambarPlate, false),
+  ],
+  "r-13": [
+    item("m13-1", "Anandhaas Thali", "Full vegetarian thali with seasonal curries and sweet", 260, "Thali", thali1, true, true),
+    item("m13-2", "Paneer Butter Masala", "Cottage cheese cubes in a rich buttery tomato gravy", 260, "Mains", thali2, true, true),
+    item("m13-3", "Masala Dosa", "Crisp dosa filled with spiced potato masala", 100, "Tiffin", dosaChutneys, true),
+    item("m13-4", "Gulab Jamun", "Warm milk-solid dumplings soaked in rose syrup", 80, "Desserts", idliBananaLeaf, true),
+  ],
+  "r-14": [
+    item("m14-1", "Naatu Kozhi Curry", "Signature country chicken curry, Kongu-style", 400, "Mains", biryani, false, true),
+    item("m14-2", "Mutton Chukka", "Dry-roasted mutton with roasted spice coating", 450, "Mains", restaurantTable, false, true),
+    item("m14-3", "Chicken 65", "Deep-fried spiced chicken bites", 280, "Starters", thali2, false, true),
+    item("m14-4", "Parotta (2 pcs)", "Flaky layered flatbread", 35, "Breads", thali1, true),
+  ],
+  "r-15": [
+    item("m15-1", "Idiyappam & Curry Course", "String hoppers with a trio of regional curries, tasting-menu style", 950, "Tasting Menu", thali2, true, true),
+    item("m15-2", "Chettinad Course", "Progressive plating of Chettinad spices and technique", 1100, "Tasting Menu", sambarPlate, false, true),
+    item("m15-3", "Payasam Reimagined", "Deconstructed semiya payasam, tasting-menu dessert course", 480, "Desserts", filterCoffee, true),
+  ],
+  "r-16": [
+    item("m16-1", "Chettinad Crab Curry", "Crab simmered in a fiery Chettinad masala", 890, "Mains", sambarPlate, false, true),
+    item("m16-2", "Malabar Fish Biryani", "Kerala-style layered fish biryani", 720, "Biryani", biryani, false, true),
+    item("m16-3", "Appam & Stew", "Lacy rice pancakes with a mild coconut vegetable stew", 480, "Mains", thali1, true),
+    item("m16-4", "Filter Coffee", "Strong decoction coffee with frothy milk", 90, "Beverages", filterCoffee, true),
+  ],
+  "r-17": [
+    item("m17-1", "Galouti Kebab", "Melt-in-the-mouth minced lamb kebab, Awadhi style", 780, "Starters", biryani, false, true),
+    item("m17-2", "Dal Jamavar", "Slow-cooked black lentils, finished with cream", 480, "Mains", thali2, true, true),
+    item("m17-3", "Lucknowi Biryani", "Fragrant dum-cooked biryani, Awadhi tradition", 850, "Biryani", biryani, false, true),
+    item("m17-4", "Sheermal", "Saffron-scented mildly sweet flatbread", 120, "Breads", thali1, true),
+  ],
 };

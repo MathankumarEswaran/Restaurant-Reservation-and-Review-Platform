@@ -9,8 +9,8 @@ export function CustomerFavorites() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">My Favorites</h1>
-      <p className="mt-1 text-slate-500">Restaurants you've saved for later.</p>
+      <h1 className="text-2xl font-bold text-text">My Favorites</h1>
+      <p className="mt-1 text-text-muted">Restaurants you've saved for later.</p>
 
       <div className="mt-6">
         {favorites.length === 0 ? (

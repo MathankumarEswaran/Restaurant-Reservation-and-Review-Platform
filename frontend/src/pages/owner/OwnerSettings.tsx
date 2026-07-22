@@ -22,11 +22,11 @@ export function OwnerSettings() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Settings</h1>
-      <p className="mt-1 text-slate-500">Manage booking preferences and payout details.</p>
+      <h1 className="text-2xl font-bold text-text">Settings</h1>
+      <p className="mt-1 text-text-muted">Manage booking preferences and payout details.</p>
 
-      <div className="mt-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="mb-4 font-semibold text-secondary">Booking Preferences</h2>
+      <div className="mt-6 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
+        <h2 className="mb-4 font-semibold text-text">Booking Preferences</h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <Select
             label="Booking Window"
@@ -41,13 +41,13 @@ export function OwnerSettings() {
         </div>
         <div className="mt-5 space-y-3">
           {toggleOptions.map((opt) => (
-            <label key={opt.key} className="flex cursor-pointer items-center justify-between rounded-xl border border-slate-100 px-4 py-3">
-              <span className="text-sm text-slate-600">{opt.label}</span>
+            <label key={opt.key} className="flex cursor-pointer items-center justify-between rounded-xl border border-border px-4 py-3">
+              <span className="text-sm text-text-muted">{opt.label}</span>
               <input
                 type="checkbox"
                 checked={prefs[opt.key]}
                 onChange={(e) => setPrefs((p) => ({ ...p, [opt.key]: e.target.checked }))}
-                className="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/30"
+                className="h-4 w-4 rounded border-border-strong text-primary focus:ring-primary/30"
               />
             </label>
           ))}
@@ -57,8 +57,8 @@ export function OwnerSettings() {
         </Button>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="mb-4 flex items-center gap-2 font-semibold text-secondary">
+      <div className="mt-6 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
+        <h2 className="mb-4 flex items-center gap-2 font-semibold text-text">
           <FiCreditCard /> Payout Method
         </h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">

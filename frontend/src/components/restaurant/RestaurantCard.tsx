@@ -15,7 +15,7 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-lg"
+      className="group overflow-hidden rounded-2xl border border-border bg-surface-raised shadow-sm hover:shadow-lg"
     >
       <Link to={`/restaurants/${restaurant.slug}`} className="block">
         <div className="relative h-48 w-full overflow-hidden">
@@ -30,7 +30,7 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
               e.preventDefault();
               toggleFavorite(restaurant);
             }}
-            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-500 shadow-sm hover:text-red-500 cursor-pointer"
+            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-text-muted shadow-sm hover:text-red-500 cursor-pointer"
             aria-label="Toggle favorite"
           >
             <FiHeart className={cn(favorite && "fill-red-500 text-red-500")} />
@@ -46,16 +46,16 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
       <div className="p-4">
         <div className="mb-1.5 flex items-start justify-between gap-2">
           <Link to={`/restaurants/${restaurant.slug}`}>
-            <h3 className="font-semibold text-secondary hover:text-primary line-clamp-1">{restaurant.name}</h3>
+            <h3 className="font-semibold text-text hover:text-primary line-clamp-1">{restaurant.name}</h3>
           </Link>
-          <span className="shrink-0 text-sm font-semibold text-slate-500">{restaurant.priceRange}</span>
+          <span className="shrink-0 text-sm font-semibold text-text-muted">{restaurant.priceRange}</span>
         </div>
-        <p className="mb-2.5 flex items-center gap-1 text-xs text-slate-500">
+        <p className="mb-2.5 flex items-center gap-1 text-xs text-text-muted">
           <FiMapPin size={12} /> {restaurant.location.city}, {restaurant.location.state}
         </p>
         <div className="mb-3 flex items-center gap-2">
           <RatingStars rating={restaurant.rating} size={13} showValue />
-          <span className="text-xs text-slate-400">({restaurant.reviewCount})</span>
+          <span className="text-xs text-text-subtle">({restaurant.reviewCount})</span>
         </div>
         <div className="flex flex-wrap items-center gap-1.5">
           {restaurant.cuisines.slice(0, 2).map((c) => (

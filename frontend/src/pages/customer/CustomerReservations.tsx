@@ -20,17 +20,17 @@ export function CustomerReservations() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">My Reservations</h1>
-      <p className="mt-1 text-slate-500">View and manage all your bookings.</p>
+      <h1 className="text-2xl font-bold text-text">My Reservations</h1>
+      <p className="mt-1 text-text-muted">View and manage all your bookings.</p>
 
-      <div className="mt-6 flex gap-2 border-b border-slate-100">
+      <div className="mt-6 flex gap-2 border-b border-border">
         {(["upcoming", "completed", "cancelled"] as Tab[]).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
             className={cn(
               "border-b-2 px-4 py-2.5 text-sm font-medium capitalize cursor-pointer",
-              tab === t ? "border-primary text-primary" : "border-transparent text-slate-500 hover:text-secondary"
+              tab === t ? "border-primary text-primary" : "border-transparent text-text-muted hover:text-text"
             )}
           >
             {t} ({myReservations.filter((r) => r.status === t).length})
@@ -49,13 +49,13 @@ export function CustomerReservations() {
         ) : (
           <div className="space-y-4">
             {filtered.map((r) => (
-              <div key={r.id} className="flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm sm:flex-row sm:items-center">
+              <div key={r.id} className="flex flex-col gap-4 rounded-2xl border border-border bg-surface-raised p-4 shadow-sm sm:flex-row sm:items-center">
                 <img src={r.restaurantImage} alt={r.restaurantName} className="h-20 w-full rounded-xl object-cover sm:h-16 sm:w-20" />
                 <div className="flex-1">
-                  <Link to={`/restaurants`} className="font-semibold text-secondary hover:text-primary">
+                  <Link to={`/restaurants`} className="font-semibold text-text hover:text-primary">
                     {r.restaurantName}
                   </Link>
-                  <div className="mt-1 flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                  <div className="mt-1 flex flex-wrap items-center gap-3 text-xs text-text-muted">
                     <span className="flex items-center gap-1">
                       <FiCalendar size={12} /> {formatDate(r.date)} · {r.time}
                     </span>
@@ -63,7 +63,7 @@ export function CustomerReservations() {
                       <FiUsers size={12} /> {r.guests} guests
                     </span>
                   </div>
-                  {r.specialRequest && <p className="mt-1.5 text-xs italic text-slate-400">"{r.specialRequest}"</p>}
+                  {r.specialRequest && <p className="mt-1.5 text-xs italic text-text-subtle">"{r.specialRequest}"</p>}
                 </div>
                 <div className="flex items-center gap-3">
                   <StatusBadge status={r.status} />

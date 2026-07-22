@@ -77,8 +77,8 @@ export function OwnerMenuManagement() {
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-secondary">Menu Management</h1>
-          <p className="mt-1 text-slate-500">Add, edit, or remove items from your menu.</p>
+          <h1 className="text-2xl font-bold text-text">Menu Management</h1>
+          <p className="mt-1 text-text-muted">Add, edit, or remove items from your menu.</p>
         </div>
         <Button icon={<FiPlus size={16} />} onClick={openAddModal}>
           Add Item
@@ -93,21 +93,21 @@ export function OwnerMenuManagement() {
               {items
                 .filter((i) => i.category === category)
                 .map((item) => (
-                  <div key={item.id} className="flex gap-3 rounded-xl border border-slate-100 bg-white p-3 shadow-sm">
+                  <div key={item.id} className="flex gap-3 rounded-xl border border-border bg-surface-raised p-3 shadow-sm">
                     <img src={item.image} alt={item.name} className="h-16 w-16 shrink-0 rounded-lg object-cover" />
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-2">
-                        <p className="font-medium text-secondary line-clamp-1">{item.name}</p>
+                        <p className="font-medium text-text line-clamp-1">{item.name}</p>
                         <span className="shrink-0 text-sm font-semibold text-primary">{formatCurrency(item.price)}</span>
                       </div>
-                      <p className="mt-0.5 line-clamp-1 text-xs text-slate-500">{item.description}</p>
+                      <p className="mt-0.5 line-clamp-1 text-xs text-text-muted">{item.description}</p>
                       <div className="mt-1.5 flex items-center justify-between">
                         {item.isVeg ? <Badge tone="accent">Veg</Badge> : <span />}
                         <div className="flex gap-1.5">
-                          <button onClick={() => openEditModal(item)} className="text-slate-400 hover:text-primary cursor-pointer">
+                          <button onClick={() => openEditModal(item)} className="text-text-subtle hover:text-primary cursor-pointer">
                             <FiEdit2 size={14} />
                           </button>
-                          <button onClick={() => deleteItem(item.id)} className="text-slate-400 hover:text-red-500 cursor-pointer">
+                          <button onClick={() => deleteItem(item.id)} className="text-text-subtle hover:text-red-500 cursor-pointer">
                             <FiTrash2 size={14} />
                           </button>
                         </div>
@@ -132,8 +132,8 @@ export function OwnerMenuManagement() {
               {...register("category")}
             />
           </div>
-          <label className="flex items-center gap-2 text-sm text-slate-600">
-            <input type="checkbox" {...register("isVeg")} className="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/30" />
+          <label className="flex items-center gap-2 text-sm text-text-muted">
+            <input type="checkbox" {...register("isVeg")} className="h-4 w-4 rounded border-border-strong text-primary focus:ring-primary/30" />
             Vegetarian
           </label>
           <Button type="submit" fullWidth>

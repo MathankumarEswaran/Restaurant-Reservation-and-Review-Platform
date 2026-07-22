@@ -26,7 +26,7 @@ export function DashboardSidebar({ navItems, onNavigate }: DashboardSidebarProps
           className={({ isActive }) =>
             cn(
               "flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors",
-              isActive ? "bg-primary text-white shadow-sm shadow-primary/30" : "text-slate-500 hover:bg-slate-100 hover:text-secondary"
+              isActive ? "bg-primary text-white shadow-sm shadow-primary/30" : "text-text-muted hover:bg-surface-sunken hover:text-text"
             )
           }
         >

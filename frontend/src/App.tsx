@@ -7,6 +7,7 @@ import { RestaurantProvider } from "./context/RestaurantContext";
 import { ReservationProvider } from "./context/ReservationContext";
 import { NotificationProvider } from "./context/NotificationContext";
 
+import { RootLayout } from "./layouts/RootLayout";
 import { MainLayout } from "./layouts/MainLayout";
 import { DashboardLayout } from "./layouts/DashboardLayout";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
@@ -60,71 +61,73 @@ function App() {
               <NotificationProvider>
                 <Toaster position="top-center" toastOptions={{ style: { fontSize: "14px" } }} />
                 <Routes>
-                  <Route element={<MainLayout />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/restaurants" element={<Restaurants />} />
-                    <Route path="/restaurants/:slug" element={<RestaurantDetails />} />
-                    <Route path="/search" element={<SearchResults />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/forgot-password" element={<ForgotPassword />} />
-                    <Route path="/reset-password" element={<ResetPassword />} />
-                    <Route path="/404" element={<NotFound />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Route>
+                  <Route element={<RootLayout />}>
+                    <Route element={<MainLayout />}>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/restaurants" element={<Restaurants />} />
+                      <Route path="/restaurants/:slug" element={<RestaurantDetails />} />
+                      <Route path="/search" element={<SearchResults />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/contact" element={<Contact />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/register" element={<Register />} />
+                      <Route path="/forgot-password" element={<ForgotPassword />} />
+                      <Route path="/reset-password" element={<ResetPassword />} />
+                      <Route path="/404" element={<NotFound />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Route>
 
-                  <Route
-                    path="/dashboard"
-                    element={
-                      <ProtectedRoute allowedRoles={["customer"]}>
-                        <DashboardLayout navItems={customerNavItems} roleLabel="Customer" />
-                      </ProtectedRoute>
-                    }
-                  >
-                    <Route index element={<CustomerHome />} />
-                    <Route path="profile" element={<CustomerProfile />} />
-                    <Route path="reservations" element={<CustomerReservations />} />
-                    <Route path="favorites" element={<CustomerFavorites />} />
-                    <Route path="notifications" element={<CustomerNotifications />} />
-                    <Route path="reviews" element={<CustomerReviews />} />
-                    <Route path="settings" element={<CustomerSettings />} />
-                  </Route>
+                    <Route
+                      path="/dashboard"
+                      element={
+                        <ProtectedRoute allowedRoles={["customer"]}>
+                          <DashboardLayout navItems={customerNavItems} roleLabel="Customer" />
+                        </ProtectedRoute>
+                      }
+                    >
+                      <Route index element={<CustomerHome />} />
+                      <Route path="profile" element={<CustomerProfile />} />
+                      <Route path="reservations" element={<CustomerReservations />} />
+                      <Route path="favorites" element={<CustomerFavorites />} />
+                      <Route path="notifications" element={<CustomerNotifications />} />
+                      <Route path="reviews" element={<CustomerReviews />} />
+                      <Route path="settings" element={<CustomerSettings />} />
+                    </Route>
 
-                  <Route
-                    path="/owner"
-                    element={
-                      <ProtectedRoute allowedRoles={["owner"]}>
-                        <DashboardLayout navItems={ownerNavItems} roleLabel="Restaurant Owner" />
-                      </ProtectedRoute>
-                    }
-                  >
-                    <Route index element={<OwnerOverview />} />
-                    <Route path="profile" element={<OwnerRestaurantProfile />} />
-                    <Route path="menu" element={<OwnerMenuManagement />} />
-                    <Route path="reservations" element={<OwnerReservations />} />
-                    <Route path="reviews" element={<OwnerReviews />} />
-                    <Route path="revenue" element={<OwnerRevenue />} />
-                    <Route path="settings" element={<OwnerSettings />} />
-                  </Route>
+                    <Route
+                      path="/owner"
+                      element={
+                        <ProtectedRoute allowedRoles={["owner"]}>
+                          <DashboardLayout navItems={ownerNavItems} roleLabel="Restaurant Owner" />
+                        </ProtectedRoute>
+                      }
+                    >
+                      <Route index element={<OwnerOverview />} />
+                      <Route path="profile" element={<OwnerRestaurantProfile />} />
+                      <Route path="menu" element={<OwnerMenuManagement />} />
+                      <Route path="reservations" element={<OwnerReservations />} />
+                      <Route path="reviews" element={<OwnerReviews />} />
+                      <Route path="revenue" element={<OwnerRevenue />} />
+                      <Route path="settings" element={<OwnerSettings />} />
+                    </Route>
 
-                  <Route
-                    path="/admin"
-                    element={
-                      <ProtectedRoute allowedRoles={["admin"]}>
-                        <DashboardLayout navItems={adminNavItems} roleLabel="Administrator" />
-                      </ProtectedRoute>
-                    }
-                  >
-                    <Route index element={<AdminOverview />} />
-                    <Route path="users" element={<AdminUsers />} />
-                    <Route path="restaurants" element={<AdminRestaurants />} />
-                    <Route path="reservations" element={<AdminReservations />} />
-                    <Route path="reviews" element={<AdminReviews />} />
-                    <Route path="payments" element={<AdminPayments />} />
-                    <Route path="analytics" element={<AdminAnalytics />} />
-                    <Route path="settings" element={<AdminSettings />} />
+                    <Route
+                      path="/admin"
+                      element={
+                        <ProtectedRoute allowedRoles={["admin"]}>
+                          <DashboardLayout navItems={adminNavItems} roleLabel="Administrator" />
+                        </ProtectedRoute>
+                      }
+                    >
+                      <Route index element={<AdminOverview />} />
+                      <Route path="users" element={<AdminUsers />} />
+                      <Route path="restaurants" element={<AdminRestaurants />} />
+                      <Route path="reservations" element={<AdminReservations />} />
+                      <Route path="reviews" element={<AdminReviews />} />
+                      <Route path="payments" element={<AdminPayments />} />
+                      <Route path="analytics" element={<AdminAnalytics />} />
+                      <Route path="settings" element={<AdminSettings />} />
+                    </Route>
                   </Route>
                 </Routes>
               </NotificationProvider>

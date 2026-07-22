@@ -19,7 +19,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-secondary hover:border-primary hover:text-primary disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
+        className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-strong text-text hover:border-primary hover:text-primary disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
         aria-label="Previous page"
       >
         <FiChevronLeft />
@@ -30,12 +30,12 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
         const showEllipsis = prevPage && page - prevPage > 1;
         return (
           <span key={page} className="flex items-center gap-1.5">
-            {showEllipsis && <span className="px-1 text-slate-400">…</span>}
+            {showEllipsis && <span className="px-1 text-text-subtle">…</span>}
             <button
               onClick={() => onPageChange(page)}
               className={cn(
                 "flex h-9 w-9 items-center justify-center rounded-lg text-sm font-medium cursor-pointer transition-colors",
-                page === currentPage ? "bg-primary text-white" : "text-secondary hover:bg-slate-100"
+                page === currentPage ? "bg-primary text-white" : "text-text hover:bg-surface-sunken"
               )}
             >
               {page}
@@ -47,7 +47,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-secondary hover:border-primary hover:text-primary disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
+        className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-strong text-text hover:border-primary hover:text-primary disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
         aria-label="Next page"
       >
         <FiChevronRight />

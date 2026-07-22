@@ -8,19 +8,19 @@ interface BreadcrumbItem {
 
 export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
   return (
-    <nav className="flex flex-wrap items-center gap-1.5 text-sm text-slate-500" aria-label="Breadcrumb">
+    <nav className="flex flex-wrap items-center gap-1.5 text-sm text-text-muted" aria-label="Breadcrumb">
       <Link to="/" className="flex items-center gap-1 hover:text-primary">
         <FiHome size={14} />
       </Link>
       {items.map((item, idx) => (
         <span key={idx} className="flex items-center gap-1.5">
-          <FiChevronRight size={14} className="text-slate-300" />
+          <FiChevronRight size={14} className="text-text-subtle" />
           {item.to ? (
             <Link to={item.to} className="hover:text-primary">
               {item.label}
             </Link>
           ) : (
-            <span className="font-medium text-secondary">{item.label}</span>
+            <span className="font-medium text-text">{item.label}</span>
           )}
         </span>
       ))}

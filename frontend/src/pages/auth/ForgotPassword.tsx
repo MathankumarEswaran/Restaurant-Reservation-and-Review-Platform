@@ -38,9 +38,9 @@ export function ForgotPassword() {
       {sent ? (
         <div className="rounded-2xl border border-accent/20 bg-accent/5 p-6 text-center">
           <FiCheckCircle className="mx-auto mb-3 text-accent-dark" size={30} />
-          <h3 className="font-semibold text-secondary">Check your inbox</h3>
-          <p className="mt-1.5 text-sm text-slate-500">
-            We sent a password reset link to <span className="font-medium text-secondary">{getValues("email")}</span>.
+          <h3 className="font-semibold text-text">Check your inbox</h3>
+          <p className="mt-1.5 text-sm text-text-muted">
+            We sent a password reset link to <span className="font-medium text-text">{getValues("email")}</span>.
           </p>
         </div>
       ) : (

@@ -20,8 +20,8 @@ export function CustomerNotifications() {
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-secondary">Notifications</h1>
-          <p className="mt-1 text-slate-500">{unreadCount} unread notifications</p>
+          <h1 className="text-2xl font-bold text-text">Notifications</h1>
+          <p className="mt-1 text-text-muted">{unreadCount} unread notifications</p>
         </div>
         {unreadCount > 0 && (
           <Button variant="outline" size="sm" onClick={markAllAsRead}>
@@ -43,7 +43,7 @@ export function CustomerNotifications() {
                   onClick={() => markAsRead(n.id)}
                   className={cn(
                     "flex w-full items-start gap-4 rounded-2xl border p-4 text-left shadow-sm transition-colors cursor-pointer",
-                    n.isRead ? "border-slate-100 bg-white" : "border-primary/20 bg-primary/5"
+                    n.isRead ? "border-border bg-surface-raised" : "border-primary/20 bg-primary/5"
                   )}
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -51,11 +51,11 @@ export function CustomerNotifications() {
                   </span>
                   <div className="flex-1">
                     <div className="flex items-center justify-between gap-2">
-                      <p className="font-medium text-secondary">{n.title}</p>
+                      <p className="font-medium text-text">{n.title}</p>
                       {!n.isRead && <span className="h-2 w-2 shrink-0 rounded-full bg-primary" />}
                     </div>
-                    <p className="mt-0.5 text-sm text-slate-500">{n.message}</p>
-                    <p className="mt-1.5 text-xs text-slate-400">{formatRelativeTime(n.createdAt)}</p>
+                    <p className="mt-0.5 text-sm text-text-muted">{n.message}</p>
+                    <p className="mt-1.5 text-xs text-text-subtle">{formatRelativeTime(n.createdAt)}</p>
                   </div>
                 </button>
               );

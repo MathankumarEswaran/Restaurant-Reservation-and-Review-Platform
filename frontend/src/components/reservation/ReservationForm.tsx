@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, useWatch, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
@@ -29,6 +29,11 @@ const TIME_SLOTS = [
 
 const GUEST_OPTIONS = Array.from({ length: 10 }, (_, i) => ({ label: `${i + 1} ${i === 0 ? "Guest" : "Guests"}`, value: String(i + 1) }));
 
+const FEE_PER_GUEST_INR = 50;
+const GST_RATE = 0.18;
+
+const formatINR = (rupees: number) => `₹${rupees.toLocaleString("en-IN")}`;
+
 const errorMessage = (error: unknown, fallback: string) =>
   (axios.isAxiosError(error) ? (error.response?.data as { message?: string } | undefined)?.message : undefined) ?? fallback;
 
@@ -47,6 +52,12 @@ export function ReservationForm({ restaurant }: { restaurant: Restaurant }) {
   } = useForm<ReservationFormValues>({
     defaultValues: { date: null, time: "", guests: "2", specialRequest: "" },
   });
+
+  const guestsValue = useWatch({ control, name: "guests" });
+  const guestCount = Number(guestsValue) || 0;
+  const baseAmount = guestCount * FEE_PER_GUEST_INR;
+  const taxAmount = Math.round(baseAmount * GST_RATE);
+  const totalAmount = baseAmount + taxAmount;
 
   const onSubmit = async (data: ReservationFormValues) => {
     if (!data.date) return;
@@ -101,8 +112,8 @@ export function ReservationForm({ restaurant }: { restaurant: Restaurant }) {
         <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-accent/15 text-accent-dark">
           <FiCalendar size={24} />
         </div>
-        <h3 className="text-lg font-semibold text-secondary">You're all set!</h3>
-        <p className="mt-1 text-sm text-slate-500">A confirmation has been added to your reservations.</p>
+        <h3 className="text-lg font-semibold text-text">You're all set!</h3>
+        <p className="mt-1 text-sm text-text-muted">A confirmation has been added to your reservations.</p>
         <Button variant="outline" className="mt-5" onClick={() => navigate("/dashboard/reservations")}>
           View My Reservations
         </Button>
@@ -111,11 +122,11 @@ export function ReservationForm({ restaurant }: { restaurant: Restaurant }) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
-      <h3 className="text-lg font-semibold text-secondary">Reserve a Table</h3>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm">
+      <h3 className="text-lg font-semibold text-text">Reserve a Table</h3>
 
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-secondary">Date</label>
+        <label className="mb-1.5 block text-sm font-medium text-text">Date</label>
         <Controller
           name="date"
           control={control}
@@ -127,7 +138,7 @@ export function ReservationForm({ restaurant }: { restaurant: Restaurant }) {
               minDate={new Date()}
               placeholderText="Select a date"
               dateFormat="MMMM d, yyyy"
-              className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-secondary outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-xl border border-border-strong px-4 py-2.5 text-sm text-text outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
               wrapperClassName="w-full"
             />
           )}
@@ -148,10 +159,25 @@ export function ReservationForm({ restaurant }: { restaurant: Restaurant }) {
 
       <Textarea label="Special Request (optional)" placeholder="Allergies, occasion, seating preference..." {...register("specialRequest")} />
 
+      <div className="rounded-xl border border-border bg-surface-sunken p-4 text-sm">
+        <div className="flex items-center justify-between text-text-muted">
+          <span>Deposit ({formatINR(FEE_PER_GUEST_INR)} × {guestCount || 0} guests)</span>
+          <span>{formatINR(baseAmount)}</span>
+        </div>
+        <div className="mt-1.5 flex items-center justify-between text-text-muted">
+          <span>GST (18%)</span>
+          <span>{formatINR(taxAmount)}</span>
+        </div>
+        <div className="mt-2 flex items-center justify-between border-t border-border-strong pt-2 font-semibold text-text">
+          <span>Total payable</span>
+          <span>{formatINR(totalAmount)}</span>
+        </div>
+      </div>
+
       <Button type="submit" fullWidth size="lg" isLoading={isSubmitting || isProcessing}>
         Reserve Now
       </Button>
-      <p className="text-center text-xs text-slate-400">A ₹50/guest deposit is required to confirm your booking</p>
+      <p className="text-center text-xs text-text-subtle">This is a refundable deposit to confirm your booking, charged securely via Razorpay</p>
     </form>
   );
 }

@@ -45,7 +45,7 @@ export function SearchResults() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="text-2xl font-bold text-secondary sm:text-3xl">
+      <h1 className="text-2xl font-bold text-text sm:text-3xl">
         {query ? (
           <>
             Search results for <span className="text-primary">&ldquo;{query}&rdquo;</span>
@@ -54,7 +54,7 @@ export function SearchResults() {
           "Search Restaurants"
         )}
       </h1>
-      <p className="mt-1 text-slate-500">{isLoading ? "Searching..." : `${restaurants.length} results found`}</p>
+      <p className="mt-1 text-text-muted">{isLoading ? "Searching..." : `${restaurants.length} results found`}</p>
 
       <div className="mt-6">
         <SearchBar variant="compact" initialQuery={query} initialLocation={location} />

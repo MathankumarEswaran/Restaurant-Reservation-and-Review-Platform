@@ -26,7 +26,7 @@ export function Modal({ isOpen, onClose, title, children, size = "md" }: ModalPr
           onClick={onClose}
         >
           <motion.div
-            className={cn("w-full rounded-2xl bg-white shadow-2xl", sizeClasses[size])}
+            className={cn("w-full rounded-2xl bg-surface-raised shadow-2xl", sizeClasses[size])}
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -34,11 +34,11 @@ export function Modal({ isOpen, onClose, title, children, size = "md" }: ModalPr
             onClick={(e) => e.stopPropagation()}
           >
             {title && (
-              <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
-                <h3 className="text-lg font-semibold text-secondary">{title}</h3>
+              <div className="flex items-center justify-between border-b border-border px-6 py-4">
+                <h3 className="text-lg font-semibold text-text">{title}</h3>
                 <button
                   onClick={onClose}
-                  className="rounded-full p-1.5 text-slate-400 hover:bg-slate-100 hover:text-secondary cursor-pointer"
+                  className="rounded-full p-1.5 text-text-subtle hover:bg-surface-sunken hover:text-text cursor-pointer"
                   aria-label="Close"
                 >
                   <FiX size={20} />

@@ -27,8 +27,8 @@ export function AdminUsers() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Users</h1>
-      <p className="mt-1 text-slate-500">Manage customers, restaurant owners, and admins.</p>
+      <h1 className="text-2xl font-bold text-text">Users</h1>
+      <p className="mt-1 text-text-muted">Manage customers, restaurant owners, and admins.</p>
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
         <Input icon={<FiSearch size={16} />} placeholder="Search by name or email" value={search} onChange={(e) => setSearch(e.target.value)} className="sm:max-w-xs" />
@@ -45,10 +45,10 @@ export function AdminUsers() {
         />
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+      <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface-raised shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[680px] text-left text-sm">
-            <thead className="bg-slate-50 text-xs uppercase text-slate-500">
+            <thead className="bg-surface-sunken text-xs uppercase text-text-muted">
               <tr>
                 <th className="px-5 py-3 font-medium">User</th>
                 <th className="px-5 py-3 font-medium">Role</th>
@@ -59,18 +59,18 @@ export function AdminUsers() {
             </thead>
             <tbody>
               {filtered.map((u) => (
-                <tr key={u.id} className="border-b border-slate-50 last:border-none">
+                <tr key={u.id} className="border-b border-border last:border-none">
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-3">
                       <img src={u.avatar} alt={u.name} className="h-9 w-9 rounded-full object-cover" />
                       <div>
-                        <p className="font-medium text-secondary">{u.name}</p>
-                        <p className="text-xs text-slate-500">{u.email}</p>
+                        <p className="font-medium text-text">{u.name}</p>
+                        <p className="text-xs text-text-muted">{u.email}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-5 py-4 capitalize text-slate-600">{u.role}</td>
-                  <td className="px-5 py-4 text-slate-600">{formatDate(u.joinedAt)}</td>
+                  <td className="px-5 py-4 capitalize text-text-muted">{u.role}</td>
+                  <td className="px-5 py-4 text-text-muted">{formatDate(u.joinedAt)}</td>
                   <td className="px-5 py-4">
                     <span className={cn("rounded-full px-2.5 py-1 text-xs font-semibold", u.suspended ? "bg-red-100 text-red-600" : "bg-accent/10 text-accent-dark")}>
                       {u.suspended ? "Suspended" : "Active"}

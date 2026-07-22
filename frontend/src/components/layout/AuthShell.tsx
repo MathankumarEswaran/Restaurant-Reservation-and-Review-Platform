@@ -18,13 +18,13 @@ export function AuthShell({ title, subtitle, children, footer }: AuthShellProps)
         <img src={restaurantTableImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20 blur-[1px]" />
         <div className="absolute inset-0 bg-surface/50" />
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="relative w-full max-w-md">
-          <Link to="/" className="mb-8 flex items-center gap-2 text-secondary">
+          <Link to="/" className="mb-8 flex items-center gap-2 text-text">
             <span className="text-lg font-bold">Chennai Traditions Reserved</span>
           </Link>
-          <h1 className="text-2xl font-bold text-secondary sm:text-3xl">{title}</h1>
-          <p className="mt-2 text-sm text-slate-500">{subtitle}</p>
+          <h1 className="text-2xl font-bold text-text sm:text-3xl">{title}</h1>
+          <p className="mt-2 text-sm text-text-muted">{subtitle}</p>
           <div className="mt-8">{children}</div>
-          {footer && <div className="mt-6 text-center text-sm text-slate-500">{footer}</div>}
+          {footer && <div className="mt-6 text-center text-sm text-text-muted">{footer}</div>}
         </motion.div>
       </div>
       <div className="relative hidden overflow-hidden bg-secondary lg:block">

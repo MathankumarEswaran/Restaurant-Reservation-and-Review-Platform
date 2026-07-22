@@ -18,11 +18,11 @@ export function OwnerOverview() {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+      <div className="flex flex-wrap items-center gap-4 rounded-2xl border border-border bg-surface-raised p-5 shadow-sm">
         <img src={restaurant.coverImage} alt={restaurant.name} className="h-16 w-16 rounded-xl object-cover" />
         <div>
-          <h1 className="text-xl font-bold text-secondary">{restaurant.name}</h1>
-          <p className="text-sm text-slate-500">{restaurant.location.city}, {restaurant.location.state}</p>
+          <h1 className="text-xl font-bold text-text">{restaurant.name}</h1>
+          <p className="text-sm text-text-muted">{restaurant.location.city}, {restaurant.location.state}</p>
         </div>
       </div>
 
@@ -34,19 +34,19 @@ export function OwnerOverview() {
       </div>
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">
+        <div className="rounded-2xl border border-border bg-surface-raised p-5 shadow-sm sm:p-6">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="font-semibold text-secondary">Recent Reservations</h2>
+            <h2 className="font-semibold text-text">Recent Reservations</h2>
             <Link to="/owner/reservations" className="flex items-center gap-1 text-sm font-medium text-primary">
               View all <FiArrowRight size={14} />
             </Link>
           </div>
           <div className="space-y-3">
             {reservations.slice(0, 4).map((r) => (
-              <div key={r.id} className="flex items-center justify-between rounded-xl border border-slate-100 p-3">
+              <div key={r.id} className="flex items-center justify-between rounded-xl border border-border p-3">
                 <div>
-                  <p className="text-sm font-medium text-secondary">{r.userName}</p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-sm font-medium text-text">{r.userName}</p>
+                  <p className="text-xs text-text-muted">
                     {formatDate(r.date)} · {r.time} · {r.guests} guests
                   </p>
                 </div>
@@ -56,21 +56,21 @@ export function OwnerOverview() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">
+        <div className="rounded-2xl border border-border bg-surface-raised p-5 shadow-sm sm:p-6">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="font-semibold text-secondary">Recent Reviews</h2>
+            <h2 className="font-semibold text-text">Recent Reviews</h2>
             <Link to="/owner/reviews" className="flex items-center gap-1 text-sm font-medium text-primary">
               View all <FiArrowRight size={14} />
             </Link>
           </div>
           <div className="space-y-3">
             {reviews.slice(0, 3).map((review) => (
-              <div key={review.id} className="rounded-xl border border-slate-100 p-3">
+              <div key={review.id} className="rounded-xl border border-border p-3">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-secondary">{review.userName}</p>
+                  <p className="text-sm font-medium text-text">{review.userName}</p>
                   <RatingStars rating={review.rating} size={12} />
                 </div>
-                <p className="mt-1 line-clamp-2 text-xs text-slate-500">{review.comment}</p>
+                <p className="mt-1 line-clamp-2 text-xs text-text-muted">{review.comment}</p>
               </div>
             ))}
           </div>

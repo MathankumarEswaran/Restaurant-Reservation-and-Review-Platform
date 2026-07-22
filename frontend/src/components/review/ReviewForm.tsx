@@ -56,9 +56,9 @@ export function ReviewForm({ restaurantSlug, onSubmitted }: { restaurantSlug: st
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm">
       <div>
-        <p className="mb-2 text-sm font-medium text-secondary">Your Rating</p>
+        <p className="mb-2 text-sm font-medium text-text">Your Rating</p>
         <RatingStars rating={rating} interactive onChange={setRating} size={26} />
       </div>
 
@@ -77,7 +77,7 @@ export function ReviewForm({ restaurantSlug, onSubmitted }: { restaurantSlug: st
       />
 
       <div>
-        <p className="mb-2 text-sm font-medium text-secondary">Add Photo (optional)</p>
+        <p className="mb-2 text-sm font-medium text-text">Add Photo (optional)</p>
         {imagePreview ? (
           <div className="relative inline-block">
             <img src={imagePreview} alt="Preview" className="h-24 w-24 rounded-xl object-cover" />
@@ -90,7 +90,7 @@ export function ReviewForm({ restaurantSlug, onSubmitted }: { restaurantSlug: st
             </button>
           </div>
         ) : (
-          <label className="flex h-24 w-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-slate-200 text-slate-400 hover:border-primary hover:text-primary">
+          <label className="flex h-24 w-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-border-strong text-text-subtle hover:border-primary hover:text-primary">
             <FiImage size={22} />
             <span className="text-[11px]">Upload</span>
             <input

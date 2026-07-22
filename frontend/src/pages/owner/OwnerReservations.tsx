@@ -24,8 +24,8 @@ export function OwnerReservations() {
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-secondary">Reservations</h1>
-          <p className="mt-1 text-slate-500">Manage incoming table reservations.</p>
+          <h1 className="text-2xl font-bold text-text">Reservations</h1>
+          <p className="mt-1 text-text-muted">Manage incoming table reservations.</p>
         </div>
         <div className="w-48">
           <Select
@@ -45,10 +45,10 @@ export function OwnerReservations() {
         {filtered.length === 0 ? (
           <EmptyState icon={<FiCalendar size={26} />} title="No reservations found" message="Reservations will appear here as customers book." />
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+          <div className="overflow-hidden rounded-2xl border border-border bg-surface-raised shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[640px] text-left text-sm">
-                <thead className="border-b border-slate-100 bg-slate-50 text-xs uppercase text-slate-500">
+                <thead className="border-b border-border bg-surface-sunken text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-5 py-3 font-medium">Guest</th>
                     <th className="px-5 py-3 font-medium">Date & Time</th>
@@ -59,15 +59,15 @@ export function OwnerReservations() {
                 </thead>
                 <tbody>
                   {filtered.map((r) => (
-                    <tr key={r.id} className="border-b border-slate-50 last:border-none">
+                    <tr key={r.id} className="border-b border-border last:border-none">
                       <td className="px-5 py-4">
-                        <p className="font-medium text-secondary">{r.userName}</p>
-                        {r.specialRequest && <p className="mt-0.5 max-w-xs text-xs italic text-slate-400 line-clamp-1">"{r.specialRequest}"</p>}
+                        <p className="font-medium text-text">{r.userName}</p>
+                        {r.specialRequest && <p className="mt-0.5 max-w-xs text-xs italic text-text-subtle line-clamp-1">"{r.specialRequest}"</p>}
                       </td>
-                      <td className="px-5 py-4 text-slate-600">
+                      <td className="px-5 py-4 text-text-muted">
                         {formatDate(r.date)} · {r.time}
                       </td>
-                      <td className="px-5 py-4 text-slate-600">{r.guests}</td>
+                      <td className="px-5 py-4 text-text-muted">{r.guests}</td>
                       <td className="px-5 py-4">
                         <StatusBadge status={r.status} />
                       </td>

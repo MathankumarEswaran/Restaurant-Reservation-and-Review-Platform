@@ -5,7 +5,17 @@ export const NAV_LINKS = [
   { label: "Contact", to: "/contact" },
 ];
 
-export const CUISINE_OPTIONS = ["South Indian", "Tiffin", "Biryani", "Vegetarian", "North Indian", "Filter Coffee"];
+export const CUISINE_OPTIONS = [
+  "South Indian",
+  "Tiffin",
+  "Biryani",
+  "Vegetarian",
+  "North Indian",
+  "Filter Coffee",
+  "Chettinad",
+  "European",
+  "Pan-Asian",
+];
 
 export const PRICE_OPTIONS = ["₹", "₹₹", "₹₹₹", "₹₹₹₹"];
 

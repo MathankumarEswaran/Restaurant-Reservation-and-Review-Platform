@@ -57,7 +57,9 @@ export interface CreateOrderPayload {
 
 export interface PaymentOrder {
   orderId: string;
-  amount: number;
+  baseAmount: number;
+  taxAmount: number;
+  totalAmount: number;
   currency: string;
   keyId: string;
 }
@@ -86,7 +88,7 @@ export function openCheckout(options: {
   }
   const razorpay = new window.Razorpay({
     key: options.order.keyId,
-    amount: options.order.amount,
+    amount: options.order.totalAmount,
     currency: options.order.currency,
     order_id: options.order.orderId,
     name: options.name,

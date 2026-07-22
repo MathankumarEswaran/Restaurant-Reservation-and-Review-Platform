@@ -19,8 +19,8 @@ export function AdminPayments() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Payments</h1>
-      <p className="mt-1 text-slate-500">Track platform-wide transactions and payouts.</p>
+      <h1 className="text-2xl font-bold text-text">Payments</h1>
+      <p className="mt-1 text-text-muted">Track platform-wide transactions and payouts.</p>
 
       <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Total Revenue" value={formatCurrency(totalRevenue)} icon={FiDollarSign} tone="primary" trend={{ value: "11%", positive: true }} />
@@ -29,13 +29,13 @@ export function AdminPayments() {
         <StatCard label="Pending Payouts" value={formatCurrency(185000)} icon={FiCreditCard} tone="primary" />
       </div>
 
-      <div className="mt-8 overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-        <div className="border-b border-slate-100 p-5">
-          <h2 className="font-semibold text-secondary">Transactions</h2>
+      <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface-raised shadow-sm">
+        <div className="border-b border-border p-5">
+          <h2 className="font-semibold text-text">Transactions</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[680px] text-left text-sm">
-            <thead className="bg-slate-50 text-xs uppercase text-slate-500">
+            <thead className="bg-surface-sunken text-xs uppercase text-text-muted">
               <tr>
                 <th className="px-5 py-3 font-medium">Guest</th>
                 <th className="px-5 py-3 font-medium">Restaurant</th>
@@ -46,11 +46,11 @@ export function AdminPayments() {
             </thead>
             <tbody>
               {payments.map((p) => (
-                <tr key={p.id} className="border-b border-slate-50 last:border-none">
-                  <td className="px-5 py-4 font-medium text-secondary">{p.guest}</td>
-                  <td className="px-5 py-4 text-slate-600">{p.restaurant}</td>
-                  <td className="px-5 py-4 text-slate-600">{formatDate(p.date)}</td>
-                  <td className="px-5 py-4 text-slate-600">{formatCurrency(p.amount)}</td>
+                <tr key={p.id} className="border-b border-border last:border-none">
+                  <td className="px-5 py-4 font-medium text-text">{p.guest}</td>
+                  <td className="px-5 py-4 text-text-muted">{p.restaurant}</td>
+                  <td className="px-5 py-4 text-text-muted">{formatDate(p.date)}</td>
+                  <td className="px-5 py-4 text-text-muted">{formatCurrency(p.amount)}</td>
                   <td className="px-5 py-4">
                     <StatusBadge status={p.status} />
                   </td>

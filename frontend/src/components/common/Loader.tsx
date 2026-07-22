@@ -4,7 +4,7 @@ export function Loader({ className, size = 32 }: { className?: string; size?: nu
   return (
     <div className={cn("flex items-center justify-center py-10", className)}>
       <span
-        className="animate-spin rounded-full border-4 border-slate-200 border-t-primary"
+        className="animate-spin rounded-full border-4 border-border-strong border-t-primary"
         style={{ width: size, height: size }}
       />
     </div>

@@ -28,8 +28,8 @@ export function OwnerRevenue() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Revenue</h1>
-      <p className="mt-1 text-slate-500">Track your restaurant's earnings over time.</p>
+      <h1 className="text-2xl font-bold text-text">Revenue</h1>
+      <p className="mt-1 text-text-muted">Track your restaurant's earnings over time.</p>
 
       <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="This Month" value={formatCurrency(620000)} icon={FiDollarSign} tone="primary" trend={{ value: "8%", positive: true }} />
@@ -38,8 +38,8 @@ export function OwnerRevenue() {
         <StatCard label="Total Bookings" value={String(reservations.length)} icon={FiCalendar} tone="primary" />
       </div>
 
-      <div className="mt-8 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">
-        <h2 className="mb-6 font-semibold text-secondary">Monthly Revenue</h2>
+      <div className="mt-8 rounded-2xl border border-border bg-surface-raised p-5 shadow-sm sm:p-6">
+        <h2 className="mb-6 font-semibold text-text">Monthly Revenue</h2>
         <div className="flex h-52 items-end gap-4 sm:gap-6">
           {monthlyRevenue.map((m) => (
             <div key={m.month} className="flex flex-1 flex-col items-center gap-2">
@@ -50,19 +50,19 @@ export function OwnerRevenue() {
                   title={formatCurrency(m.value)}
                 />
               </div>
-              <span className="text-xs text-slate-500">{m.month}</span>
+              <span className="text-xs text-text-muted">{m.month}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mt-8 overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-        <div className="border-b border-slate-100 p-5">
-          <h2 className="font-semibold text-secondary">Recent Transactions</h2>
+      <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface-raised shadow-sm">
+        <div className="border-b border-border p-5">
+          <h2 className="font-semibold text-text">Recent Transactions</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[560px] text-left text-sm">
-            <thead className="bg-slate-50 text-xs uppercase text-slate-500">
+            <thead className="bg-surface-sunken text-xs uppercase text-text-muted">
               <tr>
                 <th className="px-5 py-3 font-medium">Guest</th>
                 <th className="px-5 py-3 font-medium">Date</th>
@@ -72,10 +72,10 @@ export function OwnerRevenue() {
             </thead>
             <tbody>
               {transactions.map((t) => (
-                <tr key={t.id} className="border-b border-slate-50 last:border-none">
-                  <td className="px-5 py-4 font-medium text-secondary">{t.guest}</td>
-                  <td className="px-5 py-4 text-slate-600">{formatDate(t.date)}</td>
-                  <td className="px-5 py-4 text-slate-600">{formatCurrency(t.amount)}</td>
+                <tr key={t.id} className="border-b border-border last:border-none">
+                  <td className="px-5 py-4 font-medium text-text">{t.guest}</td>
+                  <td className="px-5 py-4 text-text-muted">{formatDate(t.date)}</td>
+                  <td className="px-5 py-4 text-text-muted">{formatCurrency(t.amount)}</td>
                   <td className="px-5 py-4">
                     <StatusBadge status={t.status} />
                   </td>

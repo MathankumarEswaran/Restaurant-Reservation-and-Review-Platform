@@ -12,7 +12,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={textareaId} className="mb-1.5 block text-sm font-medium text-secondary">
+          <label htmlFor={textareaId} className="mb-1.5 block text-sm font-medium text-text">
             {label}
           </label>
         )}
@@ -21,8 +21,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={textareaId}
           rows={rows}
           className={cn(
-            "w-full resize-none rounded-xl border bg-white px-4 py-2.5 text-sm text-secondary placeholder:text-slate-400 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20",
-            error ? "border-red-400" : "border-slate-200",
+            "w-full resize-none rounded-xl border bg-surface-raised px-4 py-2.5 text-sm text-text placeholder:text-text-subtle outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20",
+            error ? "border-red-400" : "border-border-strong",
             className
           )}
           {...rest}

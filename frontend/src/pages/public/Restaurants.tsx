@@ -55,8 +55,8 @@ export function Restaurants() {
 
       <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <Breadcrumb items={[{ label: "Restaurants" }]} />
-        <h1 className="mt-3 text-3xl font-bold text-secondary">Explore Restaurants</h1>
-        <p className="mt-1 text-slate-500">{restaurants.length} restaurants found</p>
+        <h1 className="mt-3 text-3xl font-bold text-text">Explore Restaurants</h1>
+        <p className="mt-1 text-text-muted">{restaurants.length} restaurants found</p>
 
         <div className="mt-6">
           <SearchBar variant="compact" initialQuery={filters.query} initialLocation={filters.location} />
@@ -71,7 +71,7 @@ export function Restaurants() {
             <div className="mb-5 flex items-center justify-between gap-3">
               <button
                 onClick={() => setMobileFiltersOpen(true)}
-                className="flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-secondary lg:hidden cursor-pointer"
+                className="flex items-center gap-2 rounded-xl border border-border-strong px-4 py-2 text-sm font-medium text-text lg:hidden cursor-pointer"
               >
                 <FiSliders size={15} /> Filters
               </button>
@@ -100,7 +100,7 @@ export function Restaurants() {
             <div className="relative ml-auto h-full w-80 max-w-full overflow-y-auto bg-surface p-4">
               <button
                 onClick={() => setMobileFiltersOpen(false)}
-                className="mb-3 flex items-center gap-1.5 text-sm font-medium text-slate-500 cursor-pointer"
+                className="mb-3 flex items-center gap-1.5 text-sm font-medium text-text-muted cursor-pointer"
               >
                 <FiX size={16} /> Close
               </button>

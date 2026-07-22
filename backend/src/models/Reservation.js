@@ -12,6 +12,8 @@ const reservationSchema = new mongoose.Schema(
     payment: {
       orderId: { type: String },
       paymentId: { type: String },
+      baseAmount: { type: Number },
+      taxAmount: { type: Number },
       amount: { type: Number },
       currency: { type: String, default: "INR" },
       status: { type: String, enum: ["pending", "paid"] },

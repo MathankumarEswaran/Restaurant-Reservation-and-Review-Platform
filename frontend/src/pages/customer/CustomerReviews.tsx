@@ -31,8 +31,8 @@ export function CustomerReviews() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Review History</h1>
-      <p className="mt-1 text-slate-500">Reviews you've written for restaurants.</p>
+      <h1 className="text-2xl font-bold text-text">Review History</h1>
+      <p className="mt-1 text-text-muted">Reviews you've written for restaurants.</p>
 
       <div className="mt-6">
         {!isLoading && myReviews.length === 0 ? (
@@ -45,31 +45,31 @@ export function CustomerReviews() {
         ) : (
           <div className="space-y-4">
             {myReviews.map((review) => (
-              <div key={review.id} className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+              <div key={review.id} className="rounded-2xl border border-border bg-surface-raised p-5 shadow-sm">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <img src={review.restaurant.coverImage} alt={review.restaurant.name} className="h-12 w-12 rounded-lg object-cover" />
                     <div>
-                      <p className="font-semibold text-secondary">{review.restaurant.name}</p>
+                      <p className="font-semibold text-text">{review.restaurant.name}</p>
                       <div className="mt-0.5 flex items-center gap-2">
                         <RatingStars rating={review.rating} size={13} />
-                        <span className="text-xs text-slate-400">{formatDate(review.createdAt)}</span>
+                        <span className="text-xs text-text-subtle">{formatDate(review.createdAt)}</span>
                       </div>
                     </div>
                   </div>
                   <button
                     onClick={() => toast.success("Review deleted")}
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 hover:bg-red-50 hover:text-red-500 cursor-pointer"
+                    className="flex h-9 w-9 items-center justify-center rounded-full text-text-subtle hover:bg-red-50 hover:text-red-500 cursor-pointer"
                     aria-label="Delete review"
                   >
                     <FiTrash2 size={15} />
                   </button>
                 </div>
-                <h4 className="mt-3 font-medium text-secondary">{review.title}</h4>
-                <p className="mt-1 text-sm text-slate-600">{review.comment}</p>
+                <h4 className="mt-3 font-medium text-text">{review.title}</h4>
+                <p className="mt-1 text-sm text-text-muted">{review.comment}</p>
                 {review.ownerReply && (
-                  <div className="mt-3 rounded-xl bg-slate-50 p-3 text-sm text-slate-600">
-                    <span className="font-semibold text-secondary">Owner reply: </span>
+                  <div className="mt-3 rounded-xl bg-surface-sunken p-3 text-sm text-text-muted">
+                    <span className="font-semibold text-text">Owner reply: </span>
                     {review.ownerReply.message}
                   </div>
                 )}

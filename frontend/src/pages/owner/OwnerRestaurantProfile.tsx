@@ -4,17 +4,14 @@ import { FiPlus, FiX } from "react-icons/fi";
 import { useState } from "react";
 import { Input } from "../../components/common/Input";
 import { Textarea } from "../../components/common/Textarea";
-import { Select } from "../../components/common/Select";
 import { Button } from "../../components/common/Button";
 import { getRestaurantById } from "../../data/restaurants";
-import { PRICE_OPTIONS } from "../../utils/constants";
 import { OWNER_RESTAURANT_ID } from "./ownerConstants";
 
 interface ProfileFormValues {
   name: string;
   tagline: string;
   description: string;
-  priceRange: string;
   address: string;
   city: string;
   state: string;
@@ -35,7 +32,6 @@ export function OwnerRestaurantProfile() {
       name: restaurant.name,
       tagline: restaurant.tagline,
       description: restaurant.description,
-      priceRange: restaurant.priceRange,
       address: restaurant.location.address,
       city: restaurant.location.city,
       state: restaurant.location.state,
@@ -50,15 +46,16 @@ export function OwnerRestaurantProfile() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">Restaurant Profile</h1>
-      <p className="mt-1 text-slate-500">Manage how your restaurant appears to diners.</p>
+      <h1 className="text-2xl font-bold text-text">Restaurant Profile</h1>
+      <p className="mt-1 text-text-muted">Manage how your restaurant appears to diners.</p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-6">
-        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="mb-4 font-semibold text-secondary">Basic Information</h2>
+        <div className="rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
+          <h2 className="mb-4 font-semibold text-text">Basic Information</h2>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <Input label="Restaurant Name" {...register("name")} />
-            <Select label="Price Range" options={PRICE_OPTIONS.map((p) => ({ label: p, value: p }))} {...register("priceRange")} />
+            <div className="sm:col-span-2">
+              <Input label="Restaurant Name" {...register("name")} />
+            </div>
             <div className="sm:col-span-2">
               <Input label="Tagline" {...register("tagline")} />
             </div>
@@ -68,8 +65,8 @@ export function OwnerRestaurantProfile() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="mb-4 font-semibold text-secondary">Location</h2>
+        <div className="rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
+          <h2 className="mb-4 font-semibold text-text">Location</h2>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <div className="sm:col-span-2">
               <Input label="Street Address" {...register("address")} />
@@ -80,13 +77,13 @@ export function OwnerRestaurantProfile() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="mb-4 font-semibold text-secondary">Facilities</h2>
+        <div className="rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
+          <h2 className="mb-4 font-semibold text-text">Facilities</h2>
           <div className="mb-4 flex flex-wrap gap-2">
             {facilities.map((facility) => (
-              <span key={facility} className="flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-secondary">
+              <span key={facility} className="flex items-center gap-1.5 rounded-full bg-surface-sunken px-3 py-1.5 text-xs font-medium text-text">
                 {facility}
-                <button type="button" onClick={() => setFacilities((f) => f.filter((x) => x !== facility))} className="text-slate-400 hover:text-red-500 cursor-pointer">
+                <button type="button" onClick={() => setFacilities((f) => f.filter((x) => x !== facility))} className="text-text-subtle hover:text-red-500 cursor-pointer">
                   <FiX size={12} />
                 </button>
               </span>
@@ -115,15 +112,15 @@ export function OwnerRestaurantProfile() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="mb-4 font-semibold text-secondary">Gallery</h2>
+        <div className="rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
+          <h2 className="mb-4 font-semibold text-text">Gallery</h2>
           <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
             {restaurant.gallery.map((img, idx) => (
               <img key={idx} src={img} alt="" className="h-20 w-full rounded-lg object-cover" />
             ))}
             <button
               type="button"
-              className="flex h-20 items-center justify-center rounded-lg border-2 border-dashed border-slate-200 text-slate-400 hover:border-primary hover:text-primary cursor-pointer"
+              className="flex h-20 items-center justify-center rounded-lg border-2 border-dashed border-border-strong text-text-subtle hover:border-primary hover:text-primary cursor-pointer"
               onClick={() => toast("Image upload is UI only for now", { icon: "🔧" })}
             >
               <FiPlus size={20} />

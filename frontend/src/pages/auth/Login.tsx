@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { FiMail, FiLock } from "react-icons/fi";
-import { FcGoogle } from "react-icons/fc";
 import { AuthShell } from "../../components/layout/AuthShell";
 import { Input } from "../../components/common/Input";
 import { Button } from "../../components/common/Button";
@@ -64,8 +63,8 @@ export function Login() {
           error={errors.password?.message}
         />
         <div className="flex items-center justify-between text-sm">
-          <label className="flex cursor-pointer items-center gap-2 text-slate-600">
-            <input type="checkbox" {...register("remember")} className="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/30" />
+          <label className="flex cursor-pointer items-center gap-2 text-text-muted">
+            <input type="checkbox" {...register("remember")} className="h-4 w-4 rounded border-border-strong text-primary focus:ring-primary/30" />
             Remember me
           </label>
           <Link to="/forgot-password" className="font-medium text-primary">
@@ -76,16 +75,6 @@ export function Login() {
           Log In
         </Button>
       </form>
-
-      <div className="my-6 flex items-center gap-3">
-        <div className="h-px flex-1 bg-slate-200" />
-        <span className="text-xs text-slate-400">OR</span>
-        <div className="h-px flex-1 bg-slate-200" />
-      </div>
-
-      <Button variant="outline" fullWidth size="lg" icon={<FcGoogle size={18} />} onClick={() => toast("Google login is UI only for now", { icon: "🔧" })}>
-        Continue with Google
-      </Button>
     </AuthShell>
   );
 }

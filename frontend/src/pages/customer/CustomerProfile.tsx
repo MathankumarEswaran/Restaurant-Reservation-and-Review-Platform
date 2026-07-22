@@ -28,10 +28,10 @@ export function CustomerProfile() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary">My Profile</h1>
-      <p className="mt-1 text-slate-500">Manage your personal information.</p>
+      <h1 className="text-2xl font-bold text-text">My Profile</h1>
+      <p className="mt-1 text-text-muted">Manage your personal information.</p>
 
-      <div className="mt-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
+      <div className="mt-6 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
         <div className="flex items-center gap-5">
           <div className="relative">
             <Avatar name={user?.name ?? "?"} src={user?.avatar} size={80} />
@@ -40,8 +40,8 @@ export function CustomerProfile() {
             </button>
           </div>
           <div>
-            <p className="text-lg font-semibold text-secondary">{user?.name}</p>
-            <p className="text-sm text-slate-500">Member since {user ? formatDate(user.joinedAt) : ""}</p>
+            <p className="text-lg font-semibold text-text">{user?.name}</p>
+            <p className="text-sm text-text-muted">Member since {user ? formatDate(user.joinedAt) : ""}</p>
             {user?.avatar && (
               <button
                 type="button"
@@ -49,7 +49,7 @@ export function CustomerProfile() {
                   updateUser({ avatar: undefined });
                   toast.success("Profile photo removed");
                 }}
-                className="mt-1.5 flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-red-500 cursor-pointer"
+                className="mt-1.5 flex items-center gap-1 text-xs font-medium text-text-subtle hover:text-red-500 cursor-pointer"
               >
                 <FiX size={12} /> Remove photo
               </button>
@@ -69,8 +69,8 @@ export function CustomerProfile() {
         </form>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="mb-4 font-semibold text-secondary">Change Password</h2>
+      <div className="mt-6 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
+        <h2 className="mb-4 font-semibold text-text">Change Password</h2>
         <form className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <Input label="Current Password" type="password" placeholder="••••••••" />
           <div className="hidden sm:block" />

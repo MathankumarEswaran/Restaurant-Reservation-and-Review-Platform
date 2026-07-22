@@ -26,7 +26,7 @@ export function RatingStars({ rating, size = 16, showValue, interactive, onChang
             size={size}
             className={cn(
               "transition-colors",
-              star <= Math.round(activeValue) ? "text-amber-400" : "text-slate-200",
+              star <= Math.round(activeValue) ? "text-amber-400" : "text-border-strong",
               interactive && "cursor-pointer"
             )}
             onMouseEnter={() => interactive && setHovered(star)}
@@ -35,7 +35,7 @@ export function RatingStars({ rating, size = 16, showValue, interactive, onChang
           />
         ))}
       </div>
-      {showValue && <span className="text-sm font-semibold text-secondary">{rating.toFixed(1)}</span>}
+      {showValue && <span className="text-sm font-semibold text-text">{rating.toFixed(1)}</span>}
     </div>
   );
 }
