@@ -4,10 +4,6 @@ A restaurant reservation and review platform for restaurants in Chennai and Coim
 
 This is a monorepo: `frontend/` (React + Vite) and `backend/` (Node + Express) are separate apps that run side by side.
 
-Live Demo
-
-Frontend: `<add deployed frontend URL here>`
-Backend API: `<add deployed backend URL here>`
 
 What's in the project
 

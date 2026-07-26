@@ -1,0 +1,411 @@
+{
+  "info": {
+    "name": "BookMyBite API",
+    "description": "Backend API for the BookMyBite restaurant reservation and review platform. Set the base_url variable to your running backend (default http://localhost:5000/api). Register or Login first — the token is saved automatically to the collection variable and reused by every protected request.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:5000/api" },
+    { "key": "token", "value": "" },
+    { "key": "userId", "value": "" },
+    { "key": "restaurantId", "value": "" },
+    { "key": "restaurantSlug", "value": "rayars-mess" },
+    { "key": "reservationId", "value": "" },
+    { "key": "reviewId", "value": "" },
+    { "key": "notificationId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "auth": { "type": "noauth" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test.user@example.com\",\n  \"phone\": \"9876543210\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/register", "host": ["{{base_url}}"], "path": ["auth", "register"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const data = pm.response.json();",
+                  "if (data.token) pm.collectionVariables.set('token', data.token);",
+                  "if (data.user?._id) pm.collectionVariables.set('userId', data.user._id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "auth": { "type": "noauth" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test.user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/login", "host": ["{{base_url}}"], "path": ["auth", "login"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const data = pm.response.json();",
+                  "if (data.token) pm.collectionVariables.set('token', data.token);",
+                  "if (data.user?._id) pm.collectionVariables.set('userId', data.user._id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get Current User (me)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/auth/me", "host": ["{{base_url}}"], "path": ["auth", "me"] }
+          }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "auth": { "type": "noauth" },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"test.user@example.com\"\n}" },
+            "url": { "raw": "{{base_url}}/auth/forgot-password", "host": ["{{base_url}}"], "path": ["auth", "forgot-password"] }
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "auth": { "type": "noauth" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"newPassword\": \"newPassword123\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/auth/reset-password", "host": ["{{base_url}}"], "path": ["auth", "reset-password"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Restaurants",
+      "item": [
+        {
+          "name": "List Restaurants",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": { "raw": "{{base_url}}/restaurants", "host": ["{{base_url}}"], "path": ["restaurants"] }
+          }
+        },
+        {
+          "name": "Featured Restaurants",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": { "raw": "{{base_url}}/restaurants/featured", "host": ["{{base_url}}"], "path": ["restaurants", "featured"] }
+          }
+        },
+        {
+          "name": "Top Rated Restaurants",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": { "raw": "{{base_url}}/restaurants/top-rated", "host": ["{{base_url}}"], "path": ["restaurants", "top-rated"] }
+          }
+        },
+        {
+          "name": "Trending Restaurants",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": { "raw": "{{base_url}}/restaurants/trending", "host": ["{{base_url}}"], "path": ["restaurants", "trending"] }
+          }
+        },
+        {
+          "name": "Get Restaurant by Slug",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": { "raw": "{{base_url}}/restaurants/{{restaurantSlug}}", "host": ["{{base_url}}"], "path": ["restaurants", "{{restaurantSlug}}"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const data = pm.response.json();",
+                  "if (data._id) pm.collectionVariables.set('restaurantId', data._id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get Related Restaurants",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": { "raw": "{{base_url}}/restaurants/{{restaurantId}}/related", "host": ["{{base_url}}"], "path": ["restaurants", "{{restaurantId}}", "related"] }
+          }
+        },
+        {
+          "name": "Get Restaurant Menu",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": { "raw": "{{base_url}}/restaurants/{{restaurantId}}/menu", "host": ["{{base_url}}"], "path": ["restaurants", "{{restaurantId}}", "menu"] }
+          }
+        },
+        {
+          "name": "Create Restaurant (owner/admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"New Test Restaurant\",\n  \"slug\": \"new-test-restaurant\",\n  \"tagline\": \"Great food, great vibes\",\n  \"cuisines\": [\"South Indian\"],\n  \"priceRange\": \"\\u20b9\\u20b9\",\n  \"location\": {\n    \"address\": \"123 Test Street\",\n    \"city\": \"Chennai\",\n    \"state\": \"Tamil Nadu\",\n    \"zip\": \"600001\",\n    \"lat\": 13.05,\n    \"lng\": 80.25\n  }\n}"
+            },
+            "url": { "raw": "{{base_url}}/restaurants", "host": ["{{base_url}}"], "path": ["restaurants"] }
+          }
+        },
+        {
+          "name": "Update Restaurant (owner/admin)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"tagline\": \"Updated tagline\"\n}" },
+            "url": { "raw": "{{base_url}}/restaurants/{{restaurantId}}", "host": ["{{base_url}}"], "path": ["restaurants", "{{restaurantId}}"] }
+          }
+        },
+        {
+          "name": "Delete Restaurant (owner/admin)",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{base_url}}/restaurants/{{restaurantId}}", "host": ["{{base_url}}"], "path": ["restaurants", "{{restaurantId}}"] }
+          }
+        },
+        {
+          "name": "Add Menu Item (owner/admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Filter Coffee\",\n  \"price\": 60,\n  \"category\": \"Beverages\",\n  \"vegetarian\": true\n}"
+            },
+            "url": { "raw": "{{base_url}}/restaurants/{{restaurantId}}/menu", "host": ["{{base_url}}"], "path": ["restaurants", "{{restaurantId}}", "menu"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservations",
+      "item": [
+        {
+          "name": "Create Reservation",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"restaurant\": \"{{restaurantId}}\",\n  \"date\": \"2026-08-01\",\n  \"time\": \"19:30\",\n  \"guests\": 2,\n  \"specialRequest\": \"Window seat if possible\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/reservations", "host": ["{{base_url}}"], "path": ["reservations"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const data = pm.response.json();",
+                  "if (data._id) pm.collectionVariables.set('reservationId', data._id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get Reservations by User",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/reservations/user/{{userId}}", "host": ["{{base_url}}"], "path": ["reservations", "user", "{{userId}}"] }
+          }
+        },
+        {
+          "name": "Cancel Reservation",
+          "request": {
+            "method": "PATCH",
+            "url": { "raw": "{{base_url}}/reservations/{{reservationId}}/cancel", "host": ["{{base_url}}"], "path": ["reservations", "{{reservationId}}", "cancel"] }
+          }
+        },
+        {
+          "name": "Get All Reservations (admin)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/reservations", "host": ["{{base_url}}"], "path": ["reservations"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "Get Reviews by Restaurant",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": { "raw": "{{base_url}}/reviews/restaurant/{{restaurantId}}", "host": ["{{base_url}}"], "path": ["reviews", "restaurant", "{{restaurantId}}"] }
+          }
+        },
+        {
+          "name": "Get Reviews by User",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/reviews/user/{{userId}}", "host": ["{{base_url}}"], "path": ["reviews", "user", "{{userId}}"] }
+          }
+        },
+        {
+          "name": "Get All Reviews (admin)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/reviews", "host": ["{{base_url}}"], "path": ["reviews"] }
+          }
+        },
+        {
+          "name": "Submit Review",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"restaurant\": \"{{restaurantId}}\",\n  \"rating\": 5,\n  \"comment\": \"Excellent food and service!\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/reviews", "host": ["{{base_url}}"], "path": ["reviews"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const data = pm.response.json();",
+                  "if (data._id) pm.collectionVariables.set('reviewId', data._id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Reply to Review (owner/admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"message\": \"Thanks so much for the kind words!\"\n}" },
+            "url": { "raw": "{{base_url}}/reviews/{{reviewId}}/reply", "host": ["{{base_url}}"], "path": ["reviews", "{{reviewId}}", "reply"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        {
+          "name": "Get Notifications by User",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/notifications/user/{{userId}}", "host": ["{{base_url}}"], "path": ["notifications", "user", "{{userId}}"] }
+          }
+        },
+        {
+          "name": "Mark Notification Read",
+          "request": {
+            "method": "PATCH",
+            "url": { "raw": "{{base_url}}/notifications/{{notificationId}}/read", "host": ["{{base_url}}"], "path": ["notifications", "{{notificationId}}", "read"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users & Favorites",
+      "item": [
+        {
+          "name": "Get My Favorites",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/users/me/favorites", "host": ["{{base_url}}"], "path": ["users", "me", "favorites"] }
+          }
+        },
+        {
+          "name": "Toggle Favorite",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/users/me/favorites/{{restaurantId}}", "host": ["{{base_url}}"], "path": ["users", "me", "favorites", "{{restaurantId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Create Razorpay Order",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"restaurant\": \"{{restaurantId}}\",\n  \"date\": \"2026-08-01\",\n  \"time\": \"19:30\",\n  \"guests\": 2,\n  \"specialRequest\": \"\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/payments/order", "host": ["{{base_url}}"], "path": ["payments", "order"] }
+          }
+        },
+        {
+          "name": "Verify Payment & Create Reservation",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"razorpay_order_id\": \"\",\n  \"razorpay_payment_id\": \"\",\n  \"razorpay_signature\": \"\"\n}"
+            },
+            "url": { "raw": "{{base_url}}/payments/verify", "host": ["{{base_url}}"], "path": ["payments", "verify"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Upload",
+      "item": [
+        {
+          "name": "Upload Image (owner/admin)",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [{ "key": "image", "type": "file", "src": [] }]
+            },
+            "url": { "raw": "{{base_url}}/upload/image", "host": ["{{base_url}}"], "path": ["upload", "image"] }
+          }
+        }
+      ]
+    }
+  ]
+}
