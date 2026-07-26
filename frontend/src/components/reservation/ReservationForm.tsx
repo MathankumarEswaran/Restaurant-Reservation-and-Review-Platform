@@ -81,7 +81,7 @@ export function ReservationForm({ restaurant }: { restaurant: Restaurant }) {
 
       openCheckout({
         order,
-        name: "Chennai Traditions Reserved",
+        name: "BookMyBite",
         description: `Table reservation at ${restaurant.name}`,
         prefill: { name: user.name, email: user.email, contact: user.phone },
         onSuccess: async (response) => {

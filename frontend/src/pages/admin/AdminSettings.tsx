@@ -27,7 +27,7 @@ export function AdminSettings() {
       <div className="mt-6 rounded-2xl border border-border bg-surface-raised p-6 shadow-sm sm:p-8">
         <h2 className="mb-4 font-semibold text-text">General</h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <Input label="Platform Name" defaultValue="Chennai Traditions Reserved" />
+          <Input label="Platform Name" defaultValue="BookMyBite" />
           <Input label="Support Email" defaultValue="support@tabletime.com" />
           <Input label="Commission Rate (%)" type="number" defaultValue={10} />
           <Input label="Default Currency" defaultValue="INR" />

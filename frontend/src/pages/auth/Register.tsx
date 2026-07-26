@@ -29,7 +29,7 @@ export function Register() {
   const onSubmit = async (data: RegisterFormValues) => {
     try {
       const user = await registerUser({ name: data.name, email: data.email, phone: data.phone, password: data.password });
-      toast.success(`Welcome to Chennai Traditions Reserved, ${user.name.split(" ")[0]}!`);
+      toast.success(`Welcome to BookMyBite, ${user.name.split(" ")[0]}!`);
       navigate("/dashboard");
     } catch (error) {
       const message = axios.isAxiosError(error) ? (error.response?.data as { message?: string } | undefined)?.message : undefined;

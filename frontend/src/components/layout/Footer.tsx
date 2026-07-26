@@ -20,7 +20,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link to="/" className="flex items-center gap-2 text-white">
-              <span className="text-lg font-bold">Chennai Traditions Reserved</span>
+              <span className="text-lg font-bold">BookMyBite</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
               Discover, book, and review the best restaurants near you — all in one premium platform.
@@ -92,7 +92,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-slate-500">
-          © {new Date().getFullYear()} Chennai Traditions Reserved. All rights reserved.
+          © {new Date().getFullYear()} BookMyBite. All rights reserved.
         </div>
       </div>
     </footer>

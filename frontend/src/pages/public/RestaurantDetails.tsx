@@ -43,7 +43,7 @@ export function RestaurantDetails() {
     if (!restaurant) return;
     const shareData = {
       title: restaurant.name,
-      text: `Check out ${restaurant.name} on Chennai Traditions Reserved`,
+      text: `Check out ${restaurant.name} on BookMyBite`,
       url: window.location.href,
     };
     if (navigator.share) {
@@ -116,7 +116,6 @@ export function RestaurantDetails() {
                 <span className="flex items-center gap-1 text-text-muted">
                   <FiMapPin size={14} /> {restaurant.location.address}, {restaurant.location.city}
                 </span>
-                <span className="font-semibold text-text-muted">{restaurant.priceRange}</span>
               </div>
             </div>
             <div className="flex gap-2">

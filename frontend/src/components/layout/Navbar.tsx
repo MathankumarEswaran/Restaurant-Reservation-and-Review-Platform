@@ -53,7 +53,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2 text-text">
-          <span className="text-lg font-bold">Chennai Traditions Reserved</span>
+          <span className="text-lg font-bold">BookMyBite</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

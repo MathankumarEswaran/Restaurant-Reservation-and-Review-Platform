@@ -48,7 +48,6 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
           <Link to={`/restaurants/${restaurant.slug}`}>
             <h3 className="font-semibold text-text hover:text-primary line-clamp-1">{restaurant.name}</h3>
           </Link>
-          <span className="shrink-0 text-sm font-semibold text-text-muted">{restaurant.priceRange}</span>
         </div>
         <p className="mb-2.5 flex items-center gap-1 text-xs text-text-muted">
           <FiMapPin size={12} /> {restaurant.location.city}, {restaurant.location.state}

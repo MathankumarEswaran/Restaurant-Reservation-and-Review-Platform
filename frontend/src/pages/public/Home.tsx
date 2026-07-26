@@ -174,7 +174,7 @@ export function Home() {
             align="center"
             eyebrow="Testimonials"
             title="What Our Diners Say"
-            description="Real feedback from people who use Chennai Traditions Reserved every week."
+            description="Real feedback from people who use BookMyBite every week."
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {testimonials.map((t, idx) => (

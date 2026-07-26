@@ -40,7 +40,7 @@ export const notifications: Notification[] = [
   {
     id: "n-5",
     userId: "u-1",
-    title: "Welcome to Chennai Traditions Reserved!",
+    title: "Welcome to BookMyBite!",
     message: "Thanks for joining — start exploring restaurants near you.",
     type: "system",
     isRead: true,

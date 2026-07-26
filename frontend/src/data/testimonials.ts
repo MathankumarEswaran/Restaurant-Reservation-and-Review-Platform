@@ -8,7 +8,7 @@ export const testimonials: Testimonial[] = [
     role: "Food Blogger",
     rating: 5,
     message:
-      "Chennai Traditions Reserved has completely changed how I discover restaurants. Booking takes seconds and I've never had a reservation go wrong.",
+      "BookMyBite has completely changed how I discover restaurants. Booking takes seconds and I've never had a reservation go wrong.",
   },
   {
     id: "t-2",
@@ -24,7 +24,7 @@ export const testimonials: Testimonial[] = [
     avatar: "https://i.pravatar.cc/150?img=29",
     role: "Event Planner",
     rating: 4,
-    message: "I use Chennai Traditions Reserved to book group dinners for clients constantly. The reservation flow is fast and reliable.",
+    message: "I use BookMyBite to book group dinners for clients constantly. The reservation flow is fast and reliable.",
   },
   {
     id: "t-4",

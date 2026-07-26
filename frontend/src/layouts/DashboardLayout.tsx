@@ -17,7 +17,7 @@ export function DashboardLayout({ navItems, roleLabel }: DashboardLayoutProps) {
     <div className="flex flex-1">
       <aside className="hidden w-64 shrink-0 flex-col border-r border-border bg-surface-raised lg:flex">
         <div className="border-b border-border px-5 py-4">
-          <p className="text-sm font-bold text-text leading-tight">Chennai Traditions Reserved</p>
+          <p className="text-sm font-bold text-text leading-tight">BookMyBite</p>
           <p className="text-xs text-text-subtle leading-tight">{roleLabel}</p>
         </div>
         <div className="flex-1">
@@ -47,7 +47,7 @@ export function DashboardLayout({ navItems, roleLabel }: DashboardLayoutProps) {
             >
               <div className="flex items-center justify-between border-b border-border px-5 py-4">
                 <div>
-                  <p className="text-sm font-bold text-text leading-tight">Chennai Traditions Reserved</p>
+                  <p className="text-sm font-bold text-text leading-tight">BookMyBite</p>
                   <p className="text-xs text-text-subtle leading-tight">{roleLabel}</p>
                 </div>
                 <button onClick={closeDrawer} className="text-text-subtle cursor-pointer" aria-label="Close menu">

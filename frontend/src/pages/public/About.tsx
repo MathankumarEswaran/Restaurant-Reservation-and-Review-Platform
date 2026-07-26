@@ -19,7 +19,7 @@ export function About() {
         <img src={aboutHeroImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <Breadcrumb items={[{ label: "About" }]} />
-          <h1 className="mt-4 text-4xl font-bold text-white sm:text-5xl">About Chennai Traditions Reserved</h1>
+          <h1 className="mt-4 text-4xl font-bold text-white sm:text-5xl">About BookMyBite</h1>
           <p className="mx-auto mt-4 max-w-2xl text-text-subtle">
             We're on a mission to connect diners with the authentic flavors of Tamil Nadu — one reservation at a time.
           </p>

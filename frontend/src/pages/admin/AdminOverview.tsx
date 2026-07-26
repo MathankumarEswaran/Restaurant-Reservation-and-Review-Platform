@@ -10,7 +10,7 @@ export function AdminOverview() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-text">Platform Overview</h1>
-      <p className="mt-1 text-text-muted">A snapshot of everything happening on Chennai Traditions Reserved.</p>
+      <p className="mt-1 text-text-muted">A snapshot of everything happening on BookMyBite.</p>
 
       <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Total Users" value={users.length.toLocaleString()} icon={FiUsers} tone="primary" trend={{ value: "14%", positive: true }} />

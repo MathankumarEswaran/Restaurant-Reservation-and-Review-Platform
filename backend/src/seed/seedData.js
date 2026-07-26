@@ -739,5 +739,5 @@ export const seedNotifications = [
   { userMockId: "u-1", title: "Owner replied to your review", message: "Rayar's Mess replied to your review: \"Thank you! We're glad you braved the morning queue...\"", type: "review", isRead: false, createdAt: "2026-07-11T09:15:00" },
   { userMockId: "u-1", title: "20% off this weekend", message: "Enjoy 20% off at participating restaurants this Saturday & Sunday.", type: "promo", isRead: true, createdAt: "2026-07-08T08:00:00" },
   { userMockId: "u-1", title: "Reminder: upcoming reservation", message: "Don't forget your reservation at Candyy Cafe tomorrow at 8:00 AM.", type: "reservation", isRead: true, createdAt: "2026-07-24T18:00:00" },
-  { userMockId: "u-1", title: "Welcome to Chennai Traditions Reserved!", message: "Thanks for joining — start exploring restaurants near you.", type: "system", isRead: true, createdAt: "2023-08-14T12:00:00" },
+  { userMockId: "u-1", title: "Welcome to BookMyBite!", message: "Thanks for joining — start exploring restaurants near you.", type: "system", isRead: true, createdAt: "2023-08-14T12:00:00" },
 ];
