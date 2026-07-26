@@ -16,10 +16,10 @@ export function DashboardLayout({ navItems, roleLabel }: DashboardLayoutProps) {
   return (
     <div className="flex flex-1">
       <aside className="hidden w-64 shrink-0 flex-col border-r border-border bg-surface-raised lg:flex">
-        <div className="border-b border-border px-5 py-4">
+        <Link to="/" className="block border-b border-border px-5 py-4 hover:bg-surface-sunken">
           <p className="text-sm font-bold text-text leading-tight">BookMyBite</p>
           <p className="text-xs text-text-subtle leading-tight">{roleLabel}</p>
-        </div>
+        </Link>
         <div className="flex-1">
           <DashboardSidebar navItems={navItems} />
         </div>
@@ -46,10 +46,10 @@ export function DashboardLayout({ navItems, roleLabel }: DashboardLayoutProps) {
               className="fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-surface-raised shadow-xl lg:hidden"
             >
               <div className="flex items-center justify-between border-b border-border px-5 py-4">
-                <div>
+                <Link to="/" onClick={closeDrawer}>
                   <p className="text-sm font-bold text-text leading-tight">BookMyBite</p>
                   <p className="text-xs text-text-subtle leading-tight">{roleLabel}</p>
-                </div>
+                </Link>
                 <button onClick={closeDrawer} className="text-text-subtle cursor-pointer" aria-label="Close menu">
                   <FiX size={20} />
                 </button>

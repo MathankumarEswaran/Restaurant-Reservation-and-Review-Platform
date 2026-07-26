@@ -69,16 +69,6 @@ export function Navbar() {
               {link.label}
             </NavLink>
           ))}
-          {isAuthenticated && user && (
-            <NavLink
-              to={dashboardPath}
-              className={({ isActive }) =>
-                cn("text-sm font-medium transition-colors", isActive ? "text-primary" : "text-text-muted hover:text-primary")
-              }
-            >
-              Dashboard
-            </NavLink>
-          )}
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
@@ -89,6 +79,12 @@ export function Navbar() {
           >
             {theme === "light" ? <FiMoon size={17} /> : <FiSun size={17} />}
           </button>
+
+          {isAuthenticated && user && (
+            <ButtonLink to={dashboardPath} variant="outline" size="sm" icon={<FiGrid size={15} />}>
+              Dashboard
+            </ButtonLink>
+          )}
 
           {isAuthenticated && user?.role === "customer" && (
             <Link
