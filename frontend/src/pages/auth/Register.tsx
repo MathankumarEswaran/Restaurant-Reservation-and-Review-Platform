@@ -30,7 +30,7 @@ export function Register() {
     try {
       const user = await registerUser({ name: data.name, email: data.email, phone: data.phone, password: data.password });
       toast.success(`Welcome to BookMyBite, ${user.name.split(" ")[0]}!`);
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       const message = axios.isAxiosError(error) ? (error.response?.data as { message?: string } | undefined)?.message : undefined;
       toast.error(message ?? "Something went wrong. Please try again.");

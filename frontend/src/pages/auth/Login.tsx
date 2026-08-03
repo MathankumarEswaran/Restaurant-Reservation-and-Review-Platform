@@ -26,7 +26,7 @@ export function Login() {
     try {
       const user = await login({ email: data.email, password: data.password });
       toast.success(`Welcome back, ${user.name.split(" ")[0]}!`);
-      navigate(user.role === "admin" ? "/admin" : user.role === "owner" ? "/owner" : "/dashboard");
+      navigate("/");
     } catch {
       toast.error("Invalid email or password");
     }
