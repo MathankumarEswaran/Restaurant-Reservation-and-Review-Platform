@@ -13,18 +13,18 @@ import thali2 from "../assets/restaurants/thali-2.jpg";
 import restaurantTable from "../assets/restaurants/restaurant-table.jpg";
 import vadaPlate from "../assets/restaurants/vada-plate.jpg";
 import parkElanzaHotel from "../assets/restaurants/park elanza.jpg";
-import theFrenchDoorHero from "../assets/restaurants/the-french-door.png";
-import thePavilionHero from "../assets/restaurants/the-pavilion.png";
-import birdOnTreeHero from "../assets/restaurants/bird-on-tree.png";
-import sreeAnnapoornaHero from "../assets/restaurants/sree-annapoorna.png";
-import haribhavanamHero from "../assets/restaurants/haribhavanam.png";
-import shreeAnandhaasHero from "../assets/restaurants/shree-anandhaas.png";
-import muruganIdliShopHero from "../assets/restaurants/murugan-idli-shop.png";
-import avartanaHero from "../assets/restaurants/avartana.png";
-import southernSpiceHero from "../assets/restaurants/southern-spice.png";
-import jamavarHero from "../assets/restaurants/jamavar.png";
-import ratnaCafeHero from "../assets/restaurants/ratna-cafe.png";
-import buhariHero from "../assets/restaurants/buhari.png";
+import theFrenchDoorHero from "../assets/restaurants/the-french-door.webp";
+import thePavilionHero from "../assets/restaurants/the-pavilion.webp";
+import birdOnTreeHero from "../assets/restaurants/bird-on-tree.webp";
+import sreeAnnapoornaHero from "../assets/restaurants/sree-annapoorna.webp";
+import haribhavanamHero from "../assets/restaurants/haribhavanam.webp";
+import shreeAnandhaasHero from "../assets/restaurants/shree-anandhaas.webp";
+import muruganIdliShopHero from "../assets/restaurants/murugan-idli-shop.webp";
+import avartanaHero from "../assets/restaurants/avartana.webp";
+import southernSpiceHero from "../assets/restaurants/southern-spice.webp";
+import jamavarHero from "../assets/restaurants/jamavar.webp";
+import ratnaCafeHero from "../assets/restaurants/ratna-cafe.webp";
+import buhariHero from "../assets/restaurants/buhari.webp";
 
 const tiffinHours = [
   { day: "Monday", open: "6:30 AM", close: "9:30 PM" },
