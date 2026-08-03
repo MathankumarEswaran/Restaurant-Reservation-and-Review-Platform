@@ -140,6 +140,7 @@ export function ReservationForm({ restaurant }: { restaurant: Restaurant }) {
               dateFormat="MMMM d, yyyy"
               className="w-full rounded-xl border border-border-strong px-4 py-2.5 text-sm text-text outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
               wrapperClassName="w-full"
+              portalId="datepicker-portal"
             />
           )}
         />

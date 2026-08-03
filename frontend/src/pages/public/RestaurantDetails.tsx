@@ -27,9 +27,6 @@ export function RestaurantDetails() {
   const [lastRestaurantId, setLastRestaurantId] = useState<string | undefined>(restaurant?.id);
   const [newReviews, setNewReviews] = useState<Review[]>([]);
 
-  // Reset the active gallery image whenever we navigate to a different
-  // restaurant (e.g. via a "Related Restaurants" link, which re-renders
-  // this component without unmounting it).
   if (restaurant && restaurant.id !== lastRestaurantId) {
     setLastRestaurantId(restaurant.id);
     setActiveImage(0);
@@ -50,7 +47,6 @@ export function RestaurantDetails() {
       try {
         await navigator.share(shareData);
       } catch {
-        // user cancelled the share sheet — no error toast needed
       }
       return;
     }
@@ -78,7 +74,6 @@ export function RestaurantDetails() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <Breadcrumb items={[{ label: "Restaurants", to: "/restaurants" }, { label: restaurant.name }]} />
 
-      {/* Gallery */}
       <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-4 sm:grid-rows-2">
         <div className="sm:col-span-2 sm:row-span-2">
           <img
@@ -100,7 +95,6 @@ export function RestaurantDetails() {
 
       <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_360px]">
         <div>
-          {/* Header */}
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <div className="flex flex-wrap items-center gap-2">
@@ -135,13 +129,11 @@ export function RestaurantDetails() {
             </div>
           </div>
 
-          {/* About */}
           <div className="mt-8 border-t border-border pt-8">
             <h2 className="text-lg font-semibold text-text">About</h2>
             <p className="mt-2 leading-relaxed text-text-muted">{restaurant.description}</p>
           </div>
 
-          {/* Facilities */}
           <div className="mt-8 border-t border-border pt-8">
             <h2 className="text-lg font-semibold text-text">Facilities</h2>
             <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -154,7 +146,6 @@ export function RestaurantDetails() {
             </div>
           </div>
 
-          {/* Menu */}
           <div className="mt-8 border-t border-border pt-8">
             <h2 className="text-lg font-semibold text-text">Menu</h2>
             <div className="mt-4 space-y-8">
@@ -184,7 +175,6 @@ export function RestaurantDetails() {
             </div>
           </div>
 
-          {/* Opening Hours */}
           <div className="mt-8 border-t border-border pt-8">
             <h2 className="text-lg font-semibold text-text">Opening Hours</h2>
             <div className="mt-4 space-y-2">
@@ -199,7 +189,6 @@ export function RestaurantDetails() {
             </div>
           </div>
 
-          {/* Reviews */}
           <div className="mt-8 border-t border-border pt-8">
             <SectionHeading title={`Customer Reviews (${reviews.length})`} />
             <div className="mb-8">
@@ -217,13 +206,11 @@ export function RestaurantDetails() {
           </div>
         </div>
 
-        {/* Sidebar */}
-        <div className="lg:sticky lg:top-24 lg:h-fit">
+        <div className="lg:sticky lg:top-24 lg:h-fit lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
           <ReservationForm restaurant={restaurant} />
         </div>
       </div>
 
-      {/* Related */}
       {related.length > 0 && (
         <div className="mt-16 border-t border-border pt-12">
           <SectionHeading title="You Might Also Like" description="Similar restaurants in this category." />
