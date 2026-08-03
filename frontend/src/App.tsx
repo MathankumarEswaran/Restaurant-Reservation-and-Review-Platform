@@ -6,6 +6,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { RestaurantProvider } from "./context/RestaurantContext";
 import { ReservationProvider } from "./context/ReservationContext";
 import { NotificationProvider } from "./context/NotificationContext";
+import { PriceRangeProvider } from "./context/PriceRangeContext";
 
 import { RootLayout } from "./layouts/RootLayout";
 import { MainLayout } from "./layouts/MainLayout";
@@ -59,6 +60,7 @@ function App() {
           <RestaurantProvider>
             <ReservationProvider>
               <NotificationProvider>
+              <PriceRangeProvider>
                 <Toaster position="top-center" toastOptions={{ style: { fontSize: "14px" } }} />
                 <Routes>
                   <Route element={<RootLayout />}>
@@ -130,6 +132,7 @@ function App() {
                     </Route>
                   </Route>
                 </Routes>
+              </PriceRangeProvider>
               </NotificationProvider>
             </ReservationProvider>
           </RestaurantProvider>

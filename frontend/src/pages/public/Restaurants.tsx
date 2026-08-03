@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FiSliders, FiX } from "react-icons/fi";
 import { Breadcrumb } from "../../components/common/Breadcrumb";
@@ -8,7 +8,8 @@ import { RestaurantGrid } from "../../components/restaurant/RestaurantGrid";
 import { Pagination } from "../../components/common/Pagination";
 import { Select } from "../../components/common/Select";
 import { fetchRestaurants } from "../../services/restaurantService";
-import { SORT_OPTIONS } from "../../utils/constants";
+import { SORT_OPTIONS, getPriceTiersForMax } from "../../utils/constants";
+import { usePriceRange } from "../../context/PriceRangeContext";
 import type { Restaurant, SearchFilters } from "../../types";
 import restaurantsBgImage from "../../assets/restaurants/idli-banana-leaf.jpg";
 
@@ -27,23 +28,28 @@ export function Restaurants() {
   const [page, setPage] = useState(1);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
-  // Flip back to a loading state as soon as the filters change, rather than
-  // waiting for an effect to fire — avoids a stale grid flashing briefly
-  // before the new request kicks off. See "Adjusting state when a prop
-  // changes" in the React docs for this render-time pattern.
-  const [appliedFilters, setAppliedFilters] = useState(filters);
-  if (filters !== appliedFilters) {
-    setAppliedFilters(filters);
+  const { maxPrice, reset: resetPriceRange } = usePriceRange();
+  const priceTiers = useMemo(() => getPriceTiersForMax(maxPrice), [maxPrice]);
+  const effectiveFilters = useMemo<SearchFilters>(() => ({ ...filters, price: priceTiers }), [filters, priceTiers]);
+
+  const [appliedFilters, setAppliedFilters] = useState(effectiveFilters);
+  if (effectiveFilters !== appliedFilters) {
+    setAppliedFilters(effectiveFilters);
     setIsLoading(true);
   }
 
   useEffect(() => {
-    fetchRestaurants(filters).then((data) => {
+    let cancelled = false;
+    fetchRestaurants(effectiveFilters).then((data) => {
+      if (cancelled) return;
       setRestaurants(data);
       setIsLoading(false);
       setPage(1);
     });
-  }, [filters]);
+    return () => {
+      cancelled = true;
+    };
+  }, [effectiveFilters]);
 
   const totalPages = Math.ceil(restaurants.length / PAGE_SIZE);
   const paginated = restaurants.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
@@ -64,7 +70,14 @@ export function Restaurants() {
 
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[280px_1fr]">
           <div className="hidden lg:block">
-            <SearchFiltersPanel filters={filters} onChange={setFilters} onClear={() => setFilters({ sortBy: "recommended" })} />
+            <SearchFiltersPanel
+              filters={filters}
+              onChange={setFilters}
+              onClear={() => {
+                setFilters({ sortBy: "recommended" });
+                resetPriceRange();
+              }}
+            />
           </div>
 
           <div>
@@ -104,7 +117,14 @@ export function Restaurants() {
               >
                 <FiX size={16} /> Close
               </button>
-              <SearchFiltersPanel filters={filters} onChange={setFilters} onClear={() => setFilters({ sortBy: "recommended" })} />
+              <SearchFiltersPanel
+                filters={filters}
+                onChange={setFilters}
+                onClear={() => {
+                  setFilters({ sortBy: "recommended" });
+                  resetPriceRange();
+                }}
+              />
             </div>
           </div>
         )}

@@ -1,6 +1,7 @@
 import { FiX } from "react-icons/fi";
 import type { SearchFilters } from "../../types";
-import { CUISINE_OPTIONS, PRICE_OPTIONS, CITY_OPTIONS } from "../../utils/constants";
+import { CUISINE_OPTIONS, CITY_OPTIONS } from "../../utils/constants";
+import { PriceRangeFilter } from "./PriceRangeFilter";
 import { cn } from "../../utils/cn";
 
 interface SearchFiltersPanelProps {
@@ -24,14 +25,6 @@ export function SearchFiltersPanel({ filters, onChange, onClear }: SearchFilters
     onChange({
       ...filters,
       cuisine: current.includes(cuisine) ? current.filter((c) => c !== cuisine) : [...current, cuisine],
-    });
-  };
-
-  const togglePrice = (price: string) => {
-    const current = filters.price ?? [];
-    onChange({
-      ...filters,
-      price: current.includes(price) ? current.filter((p) => p !== price) : [...current, price],
     });
   };
 
@@ -81,23 +74,7 @@ export function SearchFiltersPanel({ filters, onChange, onClear }: SearchFilters
       </div>
 
       <div className="mb-6">
-        <p className="mb-3 text-sm font-semibold text-text">Price Range</p>
-        <div className="flex gap-2">
-          {PRICE_OPTIONS.map((price) => (
-            <button
-              key={price}
-              onClick={() => togglePrice(price)}
-              className={cn(
-                "flex-1 rounded-lg border py-1.5 text-sm font-semibold cursor-pointer transition-colors",
-                filters.price?.includes(price)
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border-strong text-text-muted hover:border-primary hover:text-primary"
-              )}
-            >
-              {price}
-            </button>
-          ))}
-        </div>
+        <PriceRangeFilter />
       </div>
 
       <div className="mb-6">
