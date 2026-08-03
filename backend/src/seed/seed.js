@@ -64,7 +64,6 @@ async function run() {
     await Notification.create({ ...rest, user: userIdByMockId[userMockId] });
   }
 
-  // recompute rating/reviewCount per restaurant from seeded reviews, same as the live submitReview flow
   for (const mockId of Object.keys(restaurantIdByMockId)) {
     const restaurantId = restaurantIdByMockId[mockId];
     const stats = await Review.aggregate([

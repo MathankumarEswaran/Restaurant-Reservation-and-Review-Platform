@@ -19,7 +19,6 @@ export function DashboardShellProvider({ children }: { children: ReactNode }) {
   return <DashboardShellContext.Provider value={value}>{children}</DashboardShellContext.Provider>;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export function useDashboardShell() {
   const ctx = useContext(DashboardShellContext);
   if (!ctx) throw new Error("useDashboardShell must be used within a DashboardShellProvider");

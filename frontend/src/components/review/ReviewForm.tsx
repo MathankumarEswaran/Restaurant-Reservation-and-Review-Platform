@@ -41,9 +41,6 @@ export function ReviewForm({ restaurantSlug, onSubmitted }: { restaurantSlug: st
     }
     try {
       const restaurantId = await resolveRestaurantIdBySlug(restaurantSlug);
-      // Note: photo attachment is preview-only for now (imagePreview is a local
-      // blob: URL, not an uploaded file) — the upload endpoint isn't wired into
-      // this form yet, so we don't submit it as persisted image data.
       const review = await submitReview({ restaurantId, rating, title: data.title, comment: data.comment }, user);
       toast.success("Review submitted — thank you!");
       reset();

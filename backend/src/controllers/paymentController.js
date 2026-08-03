@@ -21,7 +21,7 @@ export const createOrder = asyncHandler(async (req, res) => {
     throw new Error("Restaurant not found");
   }
 
-  const baseAmount = Number(guests) * FEE_PER_GUEST_INR * 100; // paise
+  const baseAmount = Number(guests) * FEE_PER_GUEST_INR * 100;
   const taxAmount = Math.round(baseAmount * GST_RATE);
   const totalAmount = baseAmount + taxAmount;
 

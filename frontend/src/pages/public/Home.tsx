@@ -38,7 +38,6 @@ export function Home() {
 
   return (
     <div>
-      {/* Hero */}
       <section className="relative overflow-hidden bg-secondary">
         <img
           src={heroImage}
@@ -70,7 +69,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Popular Categories */}
       <section className="relative overflow-hidden py-20">
         <img src={categoriesBgImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35 blur-[1px]" />
         <div className="absolute inset-0 bg-surface/20" />
@@ -92,7 +90,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Featured Restaurants */}
       <section className="relative overflow-hidden py-20">
         <img src={featuredBgImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35 blur-[1px]" />
         <div className="absolute inset-0 bg-white/50" />
@@ -123,7 +120,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Top Rated */}
       <section className="relative overflow-hidden py-20">
         <img src={topRatedBgImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35 blur-[1px]" />
         <div className="absolute inset-0 bg-surface/50" />
@@ -145,7 +141,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Trending */}
       <section className="relative overflow-hidden py-20">
         <img src={trendingBgImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35 blur-[1px]" />
         <div className="absolute inset-0 bg-white/50" />
@@ -167,7 +162,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
       <section className="bg-secondary py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -198,7 +192,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Newsletter */}
       <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary-dark px-6 py-14 text-center sm:px-16">
           <FiCheckCircle className="mx-auto mb-4 text-white" size={32} />

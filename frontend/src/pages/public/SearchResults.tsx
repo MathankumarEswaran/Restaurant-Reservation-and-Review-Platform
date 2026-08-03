@@ -20,10 +20,6 @@ export function SearchResults() {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Keep filters in sync with the URL's ?q= and ?location= params (e.g. a
-  // new search submitted from the navbar). Adjusted directly during render
-  // rather than in an effect, per React's "Adjusting state when a prop
-  // changes" pattern.
   const [appliedQuery, setAppliedQuery] = useState(query);
   const [appliedLocation, setAppliedLocation] = useState(location);
   const [appliedFilters, setAppliedFilters] = useState(filters);

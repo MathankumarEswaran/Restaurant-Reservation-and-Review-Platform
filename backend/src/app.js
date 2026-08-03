@@ -22,10 +22,8 @@ app.use(cors({ origin: process.env.CLIENT_URL ?? "*" }));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
-
 app.get("/", (req, res) => res.json({ status: "ok", message: "BookMyBite API is running. See /api/... for routes." }));
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
-
 app.use("/api/auth", authRoutes);
 app.use("/api/restaurants", restaurantRoutes);
 app.use("/api/reservations", reservationRoutes);
@@ -34,6 +32,5 @@ app.use("/api/notifications", notificationRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/payments", paymentRoutes);
-
 app.use(notFound);
 app.use(errorHandler);

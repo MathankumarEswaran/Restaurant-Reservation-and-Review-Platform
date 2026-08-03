@@ -39,7 +39,6 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       prev.map((r) => (r.id === reservationId ? { ...r, status: "cancelled" } : r))
     );
     reservationService.cancelReservation(reservationId).catch(() => {
-      // revert on failure
       setReservations((prev) =>
         prev.map((r) => (r.id === reservationId ? { ...r, status: "upcoming" } : r))
       );
@@ -54,7 +53,6 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
   return <ReservationContext.Provider value={value}>{children}</ReservationContext.Provider>;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export function useReservations() {
   const ctx = useContext(ReservationContext);
   if (!ctx) throw new Error("useReservations must be used within a ReservationProvider");

@@ -14,9 +14,6 @@ interface OpeningHourLike {
   isClosed?: boolean;
 }
 
-// Collapses a 7-day opening-hours list into ranges of consecutive days that
-// share the same hours (e.g. "Monday – Saturday: 6:00 AM – 6:00 PM"), so the
-// UI doesn't need to show a row per day when most days are identical.
 export function groupOpeningHours(hours: OpeningHourLike[]): { label: string; value: string }[] {
   const groups: { days: string[]; value: string }[] = [];
 

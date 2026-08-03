@@ -55,7 +55,6 @@ export function RestaurantProvider({ children }: { children: ReactNode }) {
   return <RestaurantContext.Provider value={value}>{children}</RestaurantContext.Provider>;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export function useRestaurants() {
   const ctx = useContext(RestaurantContext);
   if (!ctx) throw new Error("useRestaurants must be used within a RestaurantProvider");

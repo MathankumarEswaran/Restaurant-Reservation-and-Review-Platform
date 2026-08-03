@@ -9,11 +9,6 @@ export const api = axios.create({
   },
 });
 
-// Uploaded/seeded images come back from the backend as paths relative to its
-// own origin (e.g. "/uploads/seed/x.jpg"), served by Express's static
-// middleware — not the Vite dev server. Used directly as an <img src>, the
-// browser resolves them against the frontend's own origin instead, so
-// backend-sourced image paths must be resolved through this first.
 const API_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, "");
 
 export function resolveImageUrl(path?: string): string {

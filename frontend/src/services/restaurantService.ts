@@ -6,10 +6,6 @@ import type { Restaurant, SearchFilters } from "../types";
 const delay = <T>(value: T, ms = 400): Promise<T> =>
   new Promise((resolve) => setTimeout(() => resolve(value), ms));
 
-// Restaurant browsing still runs on mock data (out of scope for the backend
-// migration), but mock and seeded-backend restaurants share the same slug,
-// so booking/reviews can resolve the real backend id right before submitting
-// without needing the whole browsing flow rewired.
 export async function resolveRestaurantIdBySlug(slug: string): Promise<string> {
   const { data } = await api.get<{ _id: string }>(`/restaurants/${slug}`);
   return data._id;

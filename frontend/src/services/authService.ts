@@ -43,10 +43,6 @@ export async function register(payload: RegisterPayload): Promise<{ user: User; 
   return { user: mapUser(data.user), token: data.token };
 }
 
-// The forgot/reset-password pages don't yet carry a real token between them
-// (ResetPassword always calls this with a hardcoded "mock-token" — there's no
-// email-link mechanism in place), so these stay mocked rather than hitting
-// the real backend, which expects a genuine user id and would just error.
 const delay = <T>(value: T, ms = 500): Promise<T> => new Promise((resolve) => setTimeout(() => resolve(value), ms));
 
 export function requestPasswordReset(email: string): Promise<{ sent: boolean }> {
