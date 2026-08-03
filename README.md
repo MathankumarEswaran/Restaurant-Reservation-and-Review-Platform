@@ -63,6 +63,31 @@ The frontend talks to the backend at `/api` by default; set `VITE_API_BASE_URL` 
 
 Once both are running, open `http://localhost:5173` in the browser. To stop either one, close its terminal or press Ctrl+C.
 
+Test login credentials
+
+Run `npm run seed` in `backend/` first to create these accounts.
+
+ Role ---- Email ---- Password 
+
+ Admin---- prajith@gmail.com ----- password123 
+ Owner---- rajesh@rgmail.com ---- password123 
+ Owner---- kavitha@gmail.com ---- password123 
+ Customer --- kumaran.maran@gmail.com --- password123 
+ Customer --- sanjay@gmail.com --- password123 
+
+Razorpay test payments
+
+Table booking payments run through Razorpay in test mode, so no real money is charged. When the checkout popup opens, pay with a domestic test card:
+
+`Card number` - `5267 3181 8797 5449` (Mastercard)
+`Expiry` - any future date (e.g. `12/30`)
+`CVV` - any 3 digits (e.g. `123`)
+`Name` - any name
+
+If Razorpay rejects a card with "International cards are not supported", try the Visa domestic test card `4111 1111 1111 1111` instead (some accounts flag one or the other by BIN lookup). If both are rejected the same way, it's a Razorpay Dashboard setting, not the card number — check Settings > International Payments in test mode.
+
+Razorpay's test mode confirms the payment with a simple success/failure choice instead of a real OTP screen.
+
 Other commands
 
 Frontend: `npm run build` builds for production (outputs to `frontend/dist`), `npm run preview` previews the production build.
